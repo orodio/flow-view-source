@@ -37,7 +37,9 @@ export function Account() {
       .then(setAcct)
       .catch(() => setError(true))
   }, [address])
-  useEffect(() => Prism.highlightAll(), [acct?.code])
+
+  const codeChange = (acct || {}).code || new Uint8Array()
+  useEffect(() => Prism.highlightAll(), [codeChange])
 
   if (error != null)
     return (

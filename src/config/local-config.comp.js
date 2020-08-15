@@ -6,6 +6,7 @@ export function LocalConfig() {
     config()
       .put("accessNode.api", "http://localhost:8080")
       .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
+      .put("fcl.eventsPollRate", 1000)
   }, [])
   return null
 }

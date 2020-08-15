@@ -6,6 +6,7 @@ export function TestnetConfig() {
     config()
       .put("accessNode.api", "https://access-testnet.onflow.org")
       .put("challenge.handshake", "https://flow-wallet-staging.blocto.app/authn")
+      .put("fcl.eventsPollRate", 2500)
   }, [])
   return null
 }

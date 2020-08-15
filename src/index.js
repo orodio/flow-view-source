@@ -5,8 +5,10 @@ import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {TestnetConfig} from "./config/testnet-config.comp"
 import {LocalConfig} from "./config/local-config.comp"
-import {Account} from "./pages/account.comp"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+
+import {Account} from "./pages/account.comp"
+import {Event} from "./pages/event.comp"
 
 window.fcl = fcl
 window.t = t
@@ -21,6 +23,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/testnet/account/0x:address" component={Account} />
         <Route exact path="/local/account/0x:address" component={Account} />
+        <Route exect path="/testnet/event/:eventKey" component={Event} />
+        <Route exect path="/local/event/:eventKey" component={Event} />
         <Route component={NoMatch} />
       </Switch>
     </Router>
