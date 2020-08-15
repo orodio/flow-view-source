@@ -26,14 +26,6 @@ const Muted = styled.span`
   color: #78899a;
 `
 
-const Code = styled.pre`
-  background: rgba(0, 0, 0, 0.025);
-  border-radius: 3px;
-  padding: 13px;
-  font-size: 13px;
-  line-height: 21px;
-`
-
 const H1 = styled.h1``
 
 export function Account() {
