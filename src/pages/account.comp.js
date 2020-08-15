@@ -104,15 +104,15 @@ export function Account() {
               console.log(key)
               return (
                 <li key={key.publicKey}>
-                  <strong title="index|weight|curve|hash|publicKey">
+                  <strong title="index:weight:curve:hash:publicKey">
                     <span>{key.index}</span>
-                    <Muted>|</Muted>
+                    <Muted>:</Muted>
                     <span>{key.weight}</span>
-                    <Muted>|</Muted>
+                    <Muted>:</Muted>
                     <span>{key.signAlgo}</span>
-                    <Muted>|</Muted>
+                    <Muted>:</Muted>
                     <span>{key.hashAlgo}</span>
-                    <Muted>|</Muted>
+                    <Muted>:</Muted>
                     {key.publicKey}
                   </strong>{" "}
                 </li>
