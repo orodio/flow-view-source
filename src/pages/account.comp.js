@@ -118,6 +118,7 @@ export function Account() {
                     <span>{key.weight}</span>
                     <Muted>|</Muted>
                     <span>{key.signAlgo}</span>
+                    <Muted>|</Muted>
                     <span>{key.hashAlgo}</span>
                     <Muted>|</Muted>
                     {key.publicKey}
