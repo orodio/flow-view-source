@@ -6,8 +6,6 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     font-family:"MonoLisa","JetBrains Mono","Fira Code",monospace;
   }
-
-
 `
 
 const Foundation = styled.div`
@@ -24,6 +22,7 @@ const Foundation = styled.div`
 
 const Tag = styled.a`
   position: absolute;
+  position: fixed;
   bottom: 0;
   right: 21px;
   background: tomato;
@@ -43,6 +42,7 @@ const Tag = styled.a`
     background: #ff0066;
     color: #233445;
   }
+  display: none;
 `
 
 export function Root({children}) {
