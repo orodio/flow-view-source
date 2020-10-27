@@ -1,32 +1,26 @@
 import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
-import {withPrefix, sansPrefix} from "../util/address.util"
 import * as fcl from "@onflow/fcl"
-import styled from "styled-components"
 import Prism from "prismjs"
+import {Root} from "../styles/root.comp"
+import {Muted} from "../styles/muted.comp"
+import {H1} from "../styles/h1.comp"
+import {H3} from "../styles/h3.comp"
 
-const decodeCode = code => {
+const decodeCode = (code) => {
   if (code.length) return new TextDecoder("utf-8").decode(code)
   return "No Code Deployed To This Address"
 }
 
-const getAccount = async address => {
-  const resp = await fcl.send([fcl.getAccount(sansPrefix(address))])
+const getAccount = async (address) => {
+  const resp = await fcl.send([fcl.getAccount(fcl.sansPrefix(address))])
   return fcl.decode(resp)
 }
 
-const Root = styled.div`
-  font-family: monospace;
-  color: #233445;
-  font-size: 13px;
-  padding: 21px;
-`
-
-const Muted = styled.span`
-  color: #78899a;
-`
-
-const H1 = styled.h1``
+function fmtFlow(balance) {
+  if (balance == null) return "N/A"
+  return String(Number(balance) / 100000000) + " FLOW"
+}
 
 export function Account() {
   const {address} = useParams()
@@ -46,12 +40,12 @@ export function Account() {
       <Root>
         <H1>
           <Muted>Account: </Muted>
-          <span>{withPrefix(address)}</span>
+          <span>{fcl.withPrefix(address)}</span>
         </H1>
-        <h3>
+        <H3>
           <span>Could NOT fetch info for: </span>
-          <Muted>{withPrefix(address)}</Muted>
-        </h3>
+          <Muted>{fcl.withPrefix(address)}</Muted>
+        </H3>
         <ul>
           <li>This probably means it doesn't exist</li>
         </ul>
@@ -62,12 +56,12 @@ export function Account() {
       <Root>
         <H1>
           <Muted>Account: </Muted>
-          <span>{withPrefix(address)}</span>
+          <span>{fcl.withPrefix(address)}</span>
         </H1>
-        <h3>
+        <H3>
           <span>Fetching info for: </span>
-          <Muted>{withPrefix(address)}</Muted>
-        </h3>
+          <Muted>{fcl.withPrefix(address)}</Muted>
+        </H3>
       </Root>
     )
 
@@ -75,20 +69,20 @@ export function Account() {
     <Root>
       <H1>
         <Muted>Account: </Muted>
-        <span>{withPrefix(acct.address)}</span>
+        <span>{fcl.withPrefix(acct.address)}</span>
       </H1>
       <ul>
         <li>
           <strong>Balance</strong>
           <Muted>: </Muted>
-          <span>{acct.balance}</span>
+          <span>{fmtFlow(acct.balance)}</span>
         </li>
       </ul>
       <div>
-        <h3>
+        <H3>
           <span>Keys</span>
           <Muted> {acct.keys.length}</Muted>
-        </h3>
+        </H3>
         {!acct.keys.length && (
           <ul>
             <li>
@@ -102,8 +96,7 @@ export function Account() {
         )}
         {!!acct.keys.length && (
           <ul>
-            {acct.keys.map(key => {
-              console.log(key)
+            {acct.keys.map((key) => {
               return (
                 <li key={key.publicKey}>
                   <strong title="index:weight:curve:hash:publicKey">
@@ -124,7 +117,7 @@ export function Account() {
         )}
       </div>
       <div>
-        <h3>Code</h3>
+        <H3>Code</H3>
         <pre>
           <code className="language-javascript">{decodeCode(acct.code)}</code>
         </pre>
