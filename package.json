@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@onflow/config": "0.0.2",
-    "@onflow/fcl": "0.0.60",
+    "@onflow/fcl": "0.0.61",
     "@onflow/types": "0.0.4",
     "prismjs": "^1.21.0",
     "react": "17.0.1",

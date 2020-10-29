@@ -6,20 +6,12 @@ import {Root} from "../styles/root.comp"
 import {Muted} from "../styles/muted.comp"
 import {H1} from "../styles/h1.comp"
 import {H3} from "../styles/h3.comp"
-
-const decodeCode = (code) => {
-  if (code.length) return new TextDecoder("utf-8").decode(code)
-  return "No Code Deployed To This Address"
-}
+import {LockedTokens} from "./account/locked-tokens.comp"
+import {fmtFlow} from "../util/fmt-flow.util"
 
 const getAccount = async (address) => {
   const resp = await fcl.send([fcl.getAccount(fcl.sansPrefix(address))])
   return fcl.decode(resp)
-}
-
-function fmtFlow(balance) {
-  if (balance == null) return "N/A"
-  return String(Number(balance) / 100000000) + " FLOW"
 }
 
 export function Account() {
@@ -32,8 +24,9 @@ export function Account() {
       .catch(() => setError(true))
   }, [address])
 
-  const codeChange = (acct || {}).code || new Uint8Array()
-  useEffect(() => Prism.highlightAll(), [codeChange])
+  useEffect(() => {
+    if ((acct || {}).code != null) Prism.highlightAll()
+  }, [acct])
 
   if (error != null)
     return (
@@ -78,6 +71,7 @@ export function Account() {
           <span>{fmtFlow(acct.balance)}</span>
         </li>
       </ul>
+      <LockedTokens address={fcl.withPrefix(acct.address)} />
       <div>
         <H3>
           <span>Keys</span>
@@ -116,12 +110,14 @@ export function Account() {
           </ul>
         )}
       </div>
-      <div>
-        <H3>Code</H3>
-        <pre>
-          <code className="language-javascript">{decodeCode(acct.code)}</code>
-        </pre>
-      </div>
+      {acct.code && acct.code !== "" && (
+        <div>
+          <H3>Code</H3>
+          <pre>
+            <code className="language-javascript">{acct.code}</code>
+          </pre>
+        </div>
+      )}
     </Root>
   )
 }

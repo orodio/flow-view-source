@@ -1,12 +1,14 @@
+import * as fcl from "@onflow/fcl"
 import {useEffect} from "react"
-import {config} from "@onflow/config"
 
 export function TestnetConfig() {
   useEffect(() => {
-    config()
+    fcl
+      .config()
       .put("accessNode.api", "https://access-testnet.onflow.org")
       .put("challenge.handshake", "https://fcl-discovery.vercel.app/testnet/authn")
       .put("fcl.eventsPollRate", 2500)
+      .put("contract.LockedTokens", "0x95e019a17d0e23d7")
   }, [])
   return null
 }
