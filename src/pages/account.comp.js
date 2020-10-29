@@ -66,7 +66,7 @@ export function Account() {
       </H1>
       <ul>
         <li>
-          <strong>Balance</strong>
+          <strong>Primary Balance</strong>
           <Muted>: </Muted>
           <span>{fmtFlow(acct.balance)}</span>
         </li>
