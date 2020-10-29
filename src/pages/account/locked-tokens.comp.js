@@ -45,10 +45,10 @@ export function LockedTokens({address}) {
       </H3>
       <ul>
         <li>This Account has an associated Locked Token Vault capability.</li>
-        <li>While locked these tokens can only be used for staking and delegating.</li>
+        <li>While locked, these tokens can only be used for staking and delegating.</li>
         <li>These locked tokens will unlock over time.</li>
         <li>
-          Rewards received from staking and delegating are <strong>NOT</strong> locked
+          Rewards received from staking and delegating are <strong>NOT</strong> locked.
         </li>
         <li>
           Rewards must be withdrawn into your primary balance if you wish to use them for things
