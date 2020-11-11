@@ -11,7 +11,7 @@ import {Account} from "./pages/account.comp"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 
-import {template as setCode} from "@onflow/six-setCode"
+import {template as setCode} from "@onflow/six-set-code"
 
 window.fcl = fcl
 window.t = t
