@@ -5,6 +5,7 @@
   "dependencies": {
     "@onflow/config": "0.0.2",
     "@onflow/fcl": "0.0.62",
+    "@onflow/six-set-code": "0.0.3",
     "@onflow/types": "0.0.4",
     "prismjs": "^1.21.0",
     "react": "17.0.1",
