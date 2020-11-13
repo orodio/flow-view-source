@@ -5,7 +5,7 @@ import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {MainnetConfig} from "./config/mainnet-config.comp"
 import {TestnetConfig} from "./config/testnet-config.comp"
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import {HashRouter, BrowserRouter, Route, Switch} from "react-router-dom"
 
 import {Account} from "./pages/account.comp"
 import {TxStatus} from "./pages/tx-status.comp"
@@ -28,9 +28,18 @@ window.setCode = (code) =>
 
 const NoMatch = () => <div>Sadly No</div>
 
+const Boosh = ({children}) => {
+  return (
+    <>
+      <BrowserRouter>{children}</BrowserRouter>
+      <HashRouter>{children}</HashRouter>
+    </>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Boosh>
       <Route path="/mainnet/" component={MainnetConfig} />
       <Route path="/testnet/" component={TestnetConfig} />
       <Switch>
@@ -48,10 +57,8 @@ ReactDOM.render(
 
         <Route exact path="/mainnet/me" component={Me} />
         <Route exact path="/testnet/me" component={Me} />
-
-        <Route component={NoMatch} />
       </Switch>
-    </Router>
+    </Boosh>
   </React.StrictMode>,
   document.getElementById("root")
 )
