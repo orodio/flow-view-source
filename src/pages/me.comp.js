@@ -3,6 +3,10 @@ import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {template as setCode} from "@onflow/six-set-code"
 
+import AceEditor from "react-ace"
+import "ace-builds/src-noconflict/mode-rust"
+import "ace-builds/src-noconflict/theme-nord_dark"
+
 import {Root} from "../styles/root.comp"
 import {Muted} from "../styles/muted.comp"
 import {H1} from "../styles/h1.comp"
@@ -65,7 +69,7 @@ export function Me() {
       var unsub = fcl.tx(resp).subscribe((txStatus) => {
         console.log("txStatus", txStatus)
       })
-      var txStatus = await fcl.tx(resp).onceExecuted()
+      var txStatus = await fcl.tx(resp).onceSealed()
       unsub()
       console.log("EXECUTED", txStatus)
 
@@ -95,13 +99,20 @@ export function Me() {
         </button>
       </H1>
       <div style={{display: "flex", flexDirection: "column", width: "90vw"}}>
-        <textarea
+        <h3>Contract</h3>
+        <AceEditor
+          width="100%"
+          height={`${((code || "").split("\n").length + 5) * 14}px`}
+          mode="rust"
+          theme="nord_dark"
           value={code}
-          onChange={(e) => setCode(e.target.value)}
-          style={{width: "100%", height: "75vh", marginBottom: "13px"}}
+          onChange={setCode}
+          name="RAWR"
+          tabSize="2"
+          placeholder="No Contract Code Here..."
         />
         {status === DEFAULT ? (
-          <button onClick={deploy}>Update Code</button>
+          <button onClick={deploy}>Update Contract</button>
         ) : (
           <button>{status}</button>
         )}

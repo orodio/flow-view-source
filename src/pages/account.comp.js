@@ -9,6 +9,10 @@ import {H3} from "../styles/h3.comp"
 import {LockedTokens} from "./account/locked-tokens.comp"
 import {fmtFlow} from "../util/fmt-flow.util"
 
+import AceEditor from "react-ace"
+import "ace-builds/src-noconflict/mode-rust"
+import "ace-builds/src-noconflict/theme-nord_dark"
+
 const getAccount = async (address) => {
   const resp = await fcl.send([fcl.getAccount(fcl.sansPrefix(address))])
   return fcl.decode(resp)
@@ -113,9 +117,17 @@ export function Account() {
       {acct.code && acct.code !== "" && (
         <div>
           <H3>Code</H3>
-          <pre>
-            <code className="language-javascript">{acct.code}</code>
-          </pre>
+          <AceEditor
+            width="100%"
+            height={`${(acct.code.split("\n").length + 5) * 14}px`}
+            mode="rust"
+            theme="nord_dark"
+            value={acct.code}
+            name="RAWR"
+            tabSize="2"
+            placeholder="No Contract Code Here..."
+            readOnly={true}
+          />
         </div>
       )}
     </Root>
