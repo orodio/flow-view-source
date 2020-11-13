@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import {Account} from "./pages/account.comp"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
+import {Me} from "./pages/me.comp"
 
 import {template as setCode} from "@onflow/six-set-code"
 
@@ -44,6 +45,9 @@ ReactDOM.render(
 
         <Route exact path="/mainnet/event/:eventKey" component={Event} />
         <Route exact path="/testnet/event/:eventKey" component={Event} />
+
+        <Route exact path="/mainnet/me" component={Me} />
+        <Route exact path="/testnet/me" component={Me} />
 
         <Route component={NoMatch} />
       </Switch>
