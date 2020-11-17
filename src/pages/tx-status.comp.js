@@ -2,27 +2,16 @@ import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
 import {useParams} from "react-router-dom"
 import {Root} from "../styles/root.comp"
-import {Muted} from "../styles/muted.comp"
-import {H1} from "../styles/h1.comp"
-import {H3} from "../styles/h3.comp"
+import {H1, H3, Muted, Json, List, ListItem} from "../styles/text.comp"
 
 function fmtStatus(status) {
-  switch (status) {
-    case 0:
-      return `${status} - Unknown`
-    case 1:
-      return `${status} - Pending`
-    case 2:
-      return `${status} - Finalized`
-    case 3:
-      return `${status} - Executed`
-    case 4:
-      return `${status} - Sealed`
-    case 5:
-      return `${status} - Expired`
-    default:
-      return "N/A"
-  }
+  if (status == 0) return "Unknown"
+  if (status == 1) return "Pending"
+  if (status == 2) return "Finalized"
+  if (status == 3) return "Executed"
+  if (status == 4) return "Sealed"
+  if (status == 5) return "Expired"
+  return "N/A"
 }
 
 export function TxStatus() {
@@ -52,44 +41,23 @@ export function TxStatus() {
         <Muted>Tx: </Muted>
         <span>{txId}</span>
       </H1>
-      <ul>
-        <li>
-          <strong>Status</strong>
-          <Muted>: </Muted>
-          <span>{fmtStatus(txStatus.status)}</span>
-        </li>
-        {txStatus.statusCode > 0 && (
-          <>
-            <li>
-              <strong>Status Code</strong>
-              <Muted>: </Muted>
-              <span>{txStatus.statusCode}</span>
-            </li>
-            <li>
-              <strong>Error Message</strong>
-              <Muted>: </Muted>
-              <span>{txStatus.errorMessage}</span>
-            </li>
-          </>
-        )}
-      </ul>
+      <List>
+        <ListItem label="Status" value={txStatus.status} children={txStatus.errorMessage} />
+      </List>
       <div>
         <H3>
           <span>Events</span>
           <Muted> {txStatus.events.length}</Muted>
         </H3>
-        <ul>
+        <List>
           {txStatus.events.map((ev) => {
             return (
-              <li key={ev.eventIndex}>
-                <div>
-                  <strong>{ev.type}</strong>
-                </div>
-                <pre>{JSON.stringify(ev.data, null, 2)}</pre>
-              </li>
+              <ListItem key={ev.eventIndex} value={ev.type}>
+                <Json>{ev.data}</Json>
+              </ListItem>
             )
           })}
-        </ul>
+        </List>
       </div>
     </Root>
   )

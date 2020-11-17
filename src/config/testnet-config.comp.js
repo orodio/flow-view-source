@@ -5,6 +5,7 @@ export function TestnetConfig() {
   useEffect(() => {
     fcl
       .config()
+      .put("env", "testnet")
       .put("accessNode.api", "https://access-testnet.onflow.org")
       .put("challenge.handshake", "https://fcl-discovery.vercel.app/testnet/authn")
       .put("fcl.eventsPollRate", 2500)

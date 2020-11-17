@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
 import {useParams} from "react-router-dom"
 import {Root} from "../styles/root.comp"
-import {Muted} from "../styles/muted.comp"
-import {H1} from "../styles/h1.comp"
+import {H1, Muted} from "../styles/text.comp"
 
 export function Event() {
   const {eventKey} = useParams()

@@ -1,16 +1,16 @@
-import "./styles/prism.css"
 import React from "react"
 import ReactDOM from "react-dom"
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {MainnetConfig} from "./config/mainnet-config.comp"
 import {TestnetConfig} from "./config/testnet-config.comp"
-import {HashRouter, BrowserRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 
 import {Account} from "./pages/account.comp"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 import {Me} from "./pages/me.comp"
+import {Status} from "./pages/status.comp"
 
 import {template as setCode} from "@onflow/six-set-code"
 
@@ -32,7 +32,6 @@ const Boosh = ({children}) => {
   return (
     <>
       <BrowserRouter>{children}</BrowserRouter>
-      <HashRouter>{children}</HashRouter>
     </>
   )
 }
@@ -55,8 +54,13 @@ ReactDOM.render(
         <Route exact path="/mainnet/event/:eventKey" component={Event} />
         <Route exact path="/testnet/event/:eventKey" component={Event} />
 
+        <Route exact path="/mainnet/status" component={Status} />
+        <Route exact path="/testnet/status" component={Status} />
+
         <Route exact path="/mainnet/me" component={Me} />
         <Route exact path="/testnet/me" component={Me} />
+
+        <Route component={NoMatch} />
       </Switch>
     </Boosh>
   </React.StrictMode>,

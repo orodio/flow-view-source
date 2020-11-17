@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
-import {template as setCode} from "@onflow/six-set-code"
+// import {template as setCode} from "@onflow/six-set-code"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-rust"
 import "ace-builds/src-noconflict/theme-nord_dark"
 
 import {Root} from "../styles/root.comp"
-import {Muted} from "../styles/muted.comp"
-import {H1} from "../styles/h1.comp"
+import {H1, Muted} from "../styles/text.comp"
 
 function fetchCode(address) {
   if (address == null) return Promise.resolve("")
@@ -17,7 +16,6 @@ function fetchCode(address) {
     .send([fcl.getAccount(address)])
     .then(fcl.decode)
     .then((acct) => acct.code)
-    .then((d) => (console.log("d", d), d))
 }
 
 const DEFAULT = "DEFAULT"

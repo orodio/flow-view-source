@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import * as fcl from "@onflow/fcl"
-import Prism from "prismjs"
 import {Root} from "../styles/root.comp"
-import {Muted} from "../styles/muted.comp"
-import {H1} from "../styles/h1.comp"
-import {H3} from "../styles/h3.comp"
+import {H1, H3, Muted} from "../styles/text.comp"
 import {LockedTokens} from "./account/locked-tokens.comp"
 import {fmtFlow} from "../util/fmt-flow.util"
 
@@ -27,10 +24,6 @@ export function Account() {
       .then(setAcct)
       .catch(() => setError(true))
   }, [address])
-
-  useEffect(() => {
-    if ((acct || {}).code != null) Prism.highlightAll()
-  }, [acct])
 
   if (error != null)
     return (
@@ -124,7 +117,7 @@ export function Account() {
             theme="nord_dark"
             value={acct.code}
             name="RAWR"
-            tabSize="2"
+            tabSize={2}
             placeholder="No Contract Code Here..."
             readOnly={true}
           />

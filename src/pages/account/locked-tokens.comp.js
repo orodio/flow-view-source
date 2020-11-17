@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
-import {H3} from "../../styles/h3.comp"
-import {Muted} from "../../styles/muted.comp"
+import {H3, Muted} from "../../styles/text.comp"
 import {fetchLockedTokens} from "../../flow/fetch-locked-tokens.script"
 import {fmtFlow} from "../../util/fmt-flow.util"
 
@@ -25,7 +24,7 @@ export function LockedTokens({address}) {
     fetchLockedTokens(address)
       .then(setTokens)
       .catch((d) => console.error(`fetchLockedTokens(${address})`, d))
-  }, [])
+  }, [address])
 
   useEffect(() => {
     if (tokens == null) return
@@ -34,7 +33,7 @@ export function LockedTokens({address}) {
       .then(fcl.decode)
       .then(setAcct)
       .catch((d) => console.error(`getAccount(${address})`, d))
-  }, [tokens])
+  }, [address, tokens])
 
   if (tokens == null || acct == null) return null
 

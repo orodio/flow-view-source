@@ -5,6 +5,7 @@ export function MainnetConfig() {
   useEffect(() => {
     fcl
       .config()
+      .put("env", "mainnet")
       .put("accessNode.api", "https://access-mainnet-beta.onflow.org")
       .put("challenge.handshake", "https://fcl-discovery.vercel.app/authn")
       .put("fcl.eventsPollRate", 2500)
