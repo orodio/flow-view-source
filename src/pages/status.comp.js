@@ -1,5 +1,3 @@
-import {useState, useEffect} from "react"
-import * as fcl from "@onflow/fcl"
 import {useConfig} from "../hooks/use-config.hook"
 import {Root} from "../styles/root.comp"
 import {Roll, H1, H3, Muted, List, ListItem, Good, Bad, Json, Pre} from "../styles/text.comp"
@@ -26,12 +24,12 @@ const more = (message) => {
 }
 
 function fmtStatus(status) {
-  if (status == 0) return "UNKNOWN"
-  if (status == 1) return "PENDING"
-  if (status == 2) return "FINALIZED"
-  if (status == 3) return "EXECUTED"
-  if (status == 4) return "SEALED"
-  if (status == 5) return "EXPIRED"
+  if (status === 0) return "UNKNOWN"
+  if (status === 1) return "PENDING"
+  if (status === 2) return "FINALIZED"
+  if (status === 3) return "EXECUTED"
+  if (status === 4) return "SEALED"
+  if (status === 5) return "EXPIRED"
   return "N/A"
 }
 

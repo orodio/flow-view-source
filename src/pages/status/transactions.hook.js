@@ -16,7 +16,7 @@ export function useTransactions() {
 
   useEffect(() => {
     if (txId != null) return fcl.tx(txId).subscribe(setTxResult)
-  }, txId)
+  }, [txId])
 
   const trigger = useCallback(() => {
     setStatus(PENDING)

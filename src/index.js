@@ -26,6 +26,8 @@ window.setCode = (code) =>
     }),
   ])
 
+fcl.currentUser().subscribe((user) => console.log("Current User", user))
+
 const NoMatch = () => <div>Sadly No</div>
 
 const Boosh = ({children}) => {
