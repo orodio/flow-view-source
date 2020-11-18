@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import * as fcl from "@onflow/fcl"
 import {Root} from "../styles/root.comp"
-import {H1, H3, Muted} from "../styles/text.comp"
+import {H1, H3, Muted, List, ListItem, Details, Detail} from "../styles/text.comp"
 import {LockedTokens} from "./account/locked-tokens.comp"
 import {fmtFlow} from "../util/fmt-flow.util"
 
@@ -10,17 +10,25 @@ import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-rust"
 import "ace-builds/src-noconflict/theme-nord_dark"
 
-const getAccount = async (address) => {
-  const resp = await fcl.send([fcl.getAccount(fcl.sansPrefix(address))])
-  return fcl.decode(resp)
-}
+const fmtCurve = (i) =>
+  ({
+    2: "ECDSA_P256",
+    3: "ECDSA_secp256k1",
+  }[i] || "--")
+
+const fmtHash = (i) =>
+  ({
+    1: "SHA2_256",
+    3: "SHA3_256",
+  }[i] || "--")
 
 export function Account() {
   const {address} = useParams()
   const [acct, setAcct] = useState(null)
   const [error, setError] = useState(null)
   useEffect(() => {
-    getAccount(address)
+    fcl
+      .account(address)
       .then(setAcct)
       .catch(() => setError(true))
   }, [address])
@@ -36,9 +44,9 @@ export function Account() {
           <span>Could NOT fetch info for: </span>
           <Muted>{fcl.withPrefix(address)}</Muted>
         </H3>
-        <ul>
-          <li>This probably means it doesn't exist</li>
-        </ul>
+        <List>
+          <ListItem>This probably means it doesn't exist</ListItem>
+        </List>
       </Root>
     )
   if (acct == null)
@@ -61,13 +69,9 @@ export function Account() {
         <Muted>Account: </Muted>
         <span>{fcl.withPrefix(acct.address)}</span>
       </H1>
-      <ul>
-        <li>
-          <strong>Primary Balance</strong>
-          <Muted>: </Muted>
-          <span>{fmtFlow(acct.balance)}</span>
-        </li>
-      </ul>
+      <List>
+        <ListItem label="Primary Balance" value={fmtFlow(acct.balance)} />
+      </List>
       <LockedTokens address={fcl.withPrefix(acct.address)} />
       <div>
         <H3>
@@ -75,36 +79,32 @@ export function Account() {
           <Muted> {acct.keys.length}</Muted>
         </H3>
         {!acct.keys.length && (
-          <ul>
-            <li>
+          <List>
+            <ListItem>
               This account is <strong>LOCKED</strong> (It has <strong>NO KEYS</strong>).
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               As this account is locked, it can only be interacted with via already existing public
               and private capabilities.
-            </li>
-          </ul>
+            </ListItem>
+          </List>
         )}
         {!!acct.keys.length && (
-          <ul>
+          <List>
             {acct.keys.map((key) => {
               return (
-                <li key={key.publicKey}>
-                  <strong title="index:weight:curve:hash:publicKey">
-                    <span>{key.index}</span>
-                    <Muted>:</Muted>
-                    <span>{key.weight}</span>
-                    <Muted>:</Muted>
-                    <span>{key.signAlgo}</span>
-                    <Muted>:</Muted>
-                    <span>{key.hashAlgo}</span>
-                    <Muted>:</Muted>
-                    {key.publicKey}
-                  </strong>{" "}
-                </li>
+                <ListItem key={key.publicKey} value={key.publicKey}>
+                  <Details style={{margin: "5px 13px 13px 0"}}>
+                    <Detail label="KeyId" value={key.index} />
+                    <Detail label="Weight" value={key.weight} />
+                    <Detail label="Curve" value={fmtCurve(key.signAlgo)} />
+                    <Detail label="Hash" value={fmtHash(key.hashAlgo)} />
+                    <Detail label="SeqNum" value={key.sequenceNumber} />
+                  </Details>
+                </ListItem>
               )
             })}
-          </ul>
+          </List>
         )}
       </div>
       {acct.code && acct.code !== "" && (

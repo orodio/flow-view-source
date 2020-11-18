@@ -12,20 +12,8 @@ import {Event} from "./pages/event.comp"
 import {Me} from "./pages/me.comp"
 import {Status} from "./pages/status.comp"
 
-import {template as setCode} from "@onflow/six-set-code"
-
 window.fcl = fcl
 window.t = t
-window.setCode = (code) =>
-  fcl.send([
-    setCode({
-      proposer: fcl.currentUser().authorization,
-      payer: fcl.currentUser().authorization,
-      authorization: fcl.currentUser().authorization,
-      code: code,
-    }),
-  ])
-
 fcl.currentUser().subscribe((user) => console.log("Current User", user))
 
 const NoMatch = () => <div>Sadly No</div>

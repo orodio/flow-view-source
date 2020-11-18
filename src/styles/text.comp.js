@@ -1,9 +1,30 @@
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 import {useEffect, useState} from "react"
 
-export const H1 = styled.h1``
-export const H2 = styled.h2``
-export const H3 = styled.h3``
+export const H1 = styled.h1`
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin-right: 13px;
+  }
+`
+export const H2 = styled.h2`
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin-right: 13px;
+  }
+`
+export const H3 = styled.h3`
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin-right: 13px;
+  }
+`
 
 export const Muted = styled.span`
   color: #78899a;
@@ -49,16 +70,38 @@ export const ListItem = ({label, value, children}) => {
   return (
     <Li>
       <div style={{display: "flex"}}>
-        {label && <Muted style={{marginRight: "8px"}}>{label}:</Muted>}
-        {value && <strong>{value}</strong>}
+        {label != null && <Muted style={{marginRight: "8px"}}>{label}:</Muted>}
+        {value != null && <strong>{value}</strong>}
       </div>
       {children}
     </Li>
   )
 }
 
+export const Details = styled.div`
+  display: flex;
+`
+const Det = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 13px;
+  & + & {
+    border-left: 1px solid #78899a;
+    padding-left: 13px;
+  }
+`
+export const Detail = ({label, value}) => {
+  return (
+    <Det>
+      <strong>{value}</strong>
+      <small>{label}</small>
+    </Det>
+  )
+}
+
 const Ascii = styled.pre`
   margin: 0;
+  font-weight: bold;
 `
 
 export const Dance = ({a, b}) => {
@@ -104,3 +147,28 @@ export const Roll = ({seq = defaultRoll, label}) => {
     </Ascii>
   )
 }
+
+export const Button = styled.button`
+  cursor: pointer;
+  background: #233445;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 34px;
+  padding: 0 21px;
+
+  ${(p) =>
+    p.disabled
+      ? css`
+          background: #78899a;
+          color: #233445;
+          cursor: default;
+        `
+      : css`
+          &:hover,
+          &:focus {
+            background: #344556;
+          }
+        `}
+`

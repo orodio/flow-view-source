@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
-import {H3, Muted} from "../../styles/text.comp"
+import {H3, Muted, List, ListItem, Details, Detail} from "../../styles/text.comp"
 import {fetchLockedTokens} from "../../flow/fetch-locked-tokens.script"
 import {fmtFlow} from "../../util/fmt-flow.util"
 
@@ -29,8 +29,7 @@ export function LockedTokens({address}) {
   useEffect(() => {
     if (tokens == null) return
     fcl
-      .send([fcl.getAccount(tokens.address)])
-      .then(fcl.decode)
+      .account(tokens.address)
       .then(setAcct)
       .catch((d) => console.error(`getAccount(${address})`, d))
   }, [address, tokens])
@@ -40,35 +39,27 @@ export function LockedTokens({address}) {
   return (
     <>
       <H3>
-        <span>Locked Token Vault</span>
+        <strong>Community Sale/Auction: </strong>
+        <Muted>{calcTotal(acct, tokens)}</Muted>
       </H3>
-      <ul>
-        <li>This Account has an associated Locked Token Vault capability.</li>
-        <li>While locked, these tokens can only be used for staking and delegating.</li>
-        <li>These locked tokens will unlock over time.</li>
-        <li>
+      <List>
+        <ListItem value="Locked Token Vault">
+          <Details style={{margin: "5px 13px 13px 0"}}>
+            <Detail label="Unlocked" value={calcUnlocked(acct, tokens)} />
+            <Detail label="Locked" value={calcLocked(acct, tokens)} />
+          </Details>
+        </ListItem>
+        <ListItem>This Account has an associated Locked Token Vault capability.</ListItem>
+        <ListItem>While locked, these tokens can only be used for staking and delegating.</ListItem>
+        <ListItem>These locked tokens will unlock over time.</ListItem>
+        <ListItem>
           Rewards received from staking and delegating are <strong>NOT</strong> locked.
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           Rewards must be withdrawn into your primary balance if you wish to use them for things
           other than staking or delegating.
-        </li>
-      </ul>
-      <ul style={{marginLeft: "-18px"}}>
-        <li style={{display: "flex"}}>
-          <Muted style={{width: "75px"}}>Unlocked: </Muted>
-          <strong style={{width: "100px", textAlign: "right"}}>{calcUnlocked(acct, tokens)}</strong>
-        </li>
-        <li style={{display: "flex"}}>
-          <Muted style={{width: "75px"}}>Locked: </Muted>
-          <strong style={{width: "100px", textAlign: "right"}}>{calcLocked(acct, tokens)}</strong>
-        </li>
-        <Muted>---------------------------</Muted>
-        <li style={{display: "flex"}}>
-          <Muted style={{width: "75px"}}>Total</Muted>
-          <strong style={{width: "100px", textAlign: "right"}}>{calcTotal(acct, tokens)}</strong>
-        </li>
-      </ul>
+        </ListItem>
+      </List>
     </>
   )
 }
