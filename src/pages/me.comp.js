@@ -7,6 +7,8 @@ import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-rust"
 import "ace-builds/src-noconflict/theme-nord_dark"
 
+import {useCurrentUser} from "../hooks/use-current-user.hook"
+import {useAccount} from "../hooks/use-account.hook"
 import {fmtFlow} from "../util/fmt-flow.util"
 import {Root} from "../styles/root.comp"
 import {Roll, H1, Muted, List, ListItem, Button} from "../styles/text.comp"
@@ -33,14 +35,13 @@ const SUCCESS = "Contract Deployed"
 const ERROR = "Error Deploying Contract"
 
 export function Me() {
-  const [user, setUser] = useState({addr: null})
+  const [user] = useCurrentUser()
+  const [acct] = useAccount(user.addr)
   const [code, setCode] = useState("")
-  const [acct, setAcct] = useState(null)
   const [status, setStatus] = useState(DEFAULT)
   const [txStatus, setTxStatus] = useState(null)
-  useEffect(() => fcl.currentUser().subscribe(setUser), [])
+
   useEffect(() => {
-    if (user.addr) fcl.account(user.addr).then(setAcct)
     fetchCode(user.addr).then(setCode)
   }, [user.addr])
 
@@ -49,7 +50,7 @@ export function Me() {
       <Root>
         <H1>
           <Muted>Address: </Muted>
-          <button onClick={fcl.reauthenticate}>Authenticate</button>
+          <Button onClick={fcl.reauthenticate}>Authenticate</Button>
         </H1>
       </Root>
     )

@@ -27,7 +27,7 @@ export const H3 = styled.h3`
 `
 
 export const Muted = styled.span`
-  color: #78899a;
+  color: var(--mute);
 `
 
 export const Good = styled.span`
@@ -49,7 +49,7 @@ export const Pre = styled.pre`
     content: "";
     position: absolute;
     width: 5px;
-    background: #78899a;
+    background: var(--mute);
     right: 100%;
     top: 0;
     bottom: 0;
@@ -86,7 +86,7 @@ const Det = styled.div`
   flex-direction: column;
   margin-right: 13px;
   & + & {
-    border-left: 1px solid #78899a;
+    border-left: 1px solid var(--mute);
     padding-left: 13px;
   }
 `
@@ -150,8 +150,8 @@ export const Roll = ({seq = defaultRoll, label}) => {
 
 export const Button = styled.button`
   cursor: pointer;
-  background: #233445;
-  color: white;
+  background: var(--fg);
+  color: var(--bg);
   border: none;
   border-radius: 3px;
   font-size: 13px;
@@ -161,14 +161,14 @@ export const Button = styled.button`
   ${(p) =>
     p.disabled
       ? css`
-          background: #78899a;
-          color: #233445;
+          background: var(--mute);
+          color: var(--fg);
           cursor: default;
         `
       : css`
           &:hover,
           &:focus {
-            background: #344556;
+            background: var(--wow);
           }
         `}
 `

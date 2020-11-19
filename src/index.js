@@ -2,33 +2,51 @@ import React from "react"
 import ReactDOM from "react-dom"
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import {createGlobalStyle} from "styled-components"
 import {MainnetConfig} from "./config/mainnet-config.comp"
 import {TestnetConfig} from "./config/testnet-config.comp"
-import {BrowserRouter, Route, Switch} from "react-router-dom"
 
 import {Account} from "./pages/account.comp"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 import {Me} from "./pages/me.comp"
 import {Status} from "./pages/status.comp"
+import {Seed} from "./pages/seed.comp"
 
 window.fcl = fcl
 window.t = t
 fcl.currentUser().subscribe((user) => console.log("Current User", user))
 
-const NoMatch = () => <div>Sadly No</div>
+const GlobalStyles = createGlobalStyle`
+  :root {
+    --bg: #fff;
+    --fg: #233445;
+    --mute: #78899a;
+    --wow: #6600ff;
+  }
 
-const Boosh = ({children}) => {
-  return (
-    <>
-      <BrowserRouter>{children}</BrowserRouter>
-    </>
-  )
-}
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #233445;
+      --fg: #9aabbc;
+      --mute: #78899a;
+      --wow: #6600ff;
+    }
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+  }
+`
+
+const NoMatch = () => <div>Sadly No</div>
 
 ReactDOM.render(
   <React.StrictMode>
-    <Boosh>
+    <GlobalStyles />
+    <Router>
       <Route path="/mainnet/" component={MainnetConfig} />
       <Route path="/testnet/" component={TestnetConfig} />
       <Switch>
@@ -50,9 +68,11 @@ ReactDOM.render(
         <Route exact path="/mainnet/me" component={Me} />
         <Route exact path="/testnet/me" component={Me} />
 
+        <Route exact path="/testnet/seed" component={Seed} />
+
         <Route component={NoMatch} />
       </Switch>
-    </Boosh>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 )

@@ -10,10 +10,10 @@ const GlobalStyle = createGlobalStyle`
 
 const Foundation = styled.div`
   font-family: "MonoLisa", "JetBrains Mono", "Fira Code", monospace;
-  color: #233445;
+  color: var(--fg);
   font-size: 13px;
   padding: 21px 21px 34px 21px;
-  border: 8px solid #233445;
+  border: 8px solid var(--fg);
   margin: 0;
   min-height: 100vh;
   min-width: 100%;
@@ -30,17 +30,17 @@ const Tag = styled.a`
   font-size: 13px;
   line-height: 34px;
   font-weight: bold;
-  color: #fff;
+  color: var(--bg);
   padding: 0 21px;
-  background: #233445;
+  background: var(--fg);
   border-radius: 3px 3px 0 0;
   text-decoration: none;
 
   &:hover,
   &:focus,
   &:active {
-    background: #ff0066;
-    color: #233445;
+    background: var(--wow);
+    color: var(--fg);
   }
   display: none;
 `
