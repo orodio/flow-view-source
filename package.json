@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@onflow/config": "0.0.2",
-    "@onflow/fcl": "0.0.67-alpha.6",
+    "@onflow/fcl": "0.0.67-alpha.7",
     "@onflow/six-set-code": "0.0.3",
     "@onflow/types": "0.0.4",
     "ace-builds": "^1.4.12",
