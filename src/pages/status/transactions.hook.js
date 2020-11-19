@@ -1,5 +1,6 @@
 import {useState, useEffect, useCallback} from "react"
 import * as fcl from "@onflow/fcl"
+import * as t from "@onflow/types"
 
 const DEFAULT = "..."
 const PENDING = "PENDING"
@@ -23,16 +24,19 @@ export function useTransactions() {
     fcl.unauthenticate()
     fcl
       .send([
+        fcl.args([fcl.arg(7, t.Int), fcl.arg(2, t.Int)]),
+        fcl.proposer(authz),
+        fcl.payer(authz),
+        fcl.authorizations([authz]),
         fcl.transaction`
-          transaction {
+          transaction(a: Int, b: Int) {
             prepare(acct: AuthAccount) {
+              let c = a + b
+              log(c)
               log(acct)
             }
           }
         `,
-        fcl.proposer(authz),
-        fcl.payer(authz),
-        fcl.authorizations([authz]),
       ])
       .then((resp) => {
         setStatus(SUCCESS)

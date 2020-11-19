@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
+import * as t from "@onflow/types"
 
 const PENDING = "PENDING"
 const SUCCESS = "SUCCESS"
@@ -12,9 +13,10 @@ export function useScripts() {
   useEffect(() => {
     fcl
       .send([
+        fcl.args([fcl.arg(6, t.Int), fcl.arg(3, t.Int)]),
         fcl.script`
-          pub fun main(): Int {
-            return 5 + 3
+          pub fun main(a: Int, b: Int): Int {
+            return a + b
           }
         `,
       ])

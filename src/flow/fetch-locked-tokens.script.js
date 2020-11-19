@@ -5,7 +5,7 @@ export async function fetchLockedTokens(address) {
   return fcl
     .send([
       fcl.script`
-        import LockedTokens from ${await fcl.config().get("contract.LockedTokens")}   
+        import LockedTokens from 0xLockedTokens
 
         pub struct Summary {
           pub let address: Address
@@ -31,3 +31,4 @@ export async function fetchLockedTokens(address) {
     ])
     .then(fcl.decode)
 }
+// import LockedTokens from ${await fcl.config().get("contract.LockedTokens")}
