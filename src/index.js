@@ -13,10 +13,11 @@ import {Event} from "./pages/event.comp"
 import {Me} from "./pages/me.comp"
 import {Status} from "./pages/status.comp"
 import {Seed} from "./pages/seed.comp"
+import {Ledger} from "./pages/ledger.comp"
 
 window.fcl = fcl
 window.t = t
-fcl.currentUser().subscribe((user) => console.log("Current User", user))
+fcl.currentUser().subscribe(user => console.log("Current User", user))
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -69,6 +70,9 @@ ReactDOM.render(
         <Route exact path="/testnet/me" component={Me} />
 
         <Route exact path="/testnet/seed" component={Seed} />
+
+        <Route exact path="/mainnet/ledger" component={Ledger} />
+        <Route exact path="/testnet/ledger" component={Ledger} />
 
         <Route component={NoMatch} />
       </Switch>

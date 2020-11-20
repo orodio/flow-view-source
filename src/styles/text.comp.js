@@ -108,7 +108,7 @@ export const Dance = ({a, b}) => {
   const [state, setState] = useState(a)
   useEffect(() => {
     const interval = setInterval(() => {
-      setState((state) => (state === a ? b : a))
+      setState(state => (state === a ? b : a))
     }, 500)
     return () => clearInterval(interval)
   }, [a, b])
@@ -133,7 +133,7 @@ export const Roll = ({seq = defaultRoll, label}) => {
   const [i, set] = useState(0)
   useEffect(() => {
     const interval = setInterval(() => {
-      set((state) => {
+      set(state => {
         var next = state + 1
         return next >= seq.length ? 0 : next
       })
@@ -158,7 +158,7 @@ export const Button = styled.button`
   line-height: 34px;
   padding: 0 21px;
 
-  ${(p) =>
+  ${p =>
     p.disabled
       ? css`
           background: var(--mute);
@@ -172,3 +172,5 @@ export const Button = styled.button`
           }
         `}
 `
+
+export const A = styled.a``

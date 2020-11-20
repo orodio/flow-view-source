@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {useCurrentUser} from "../hooks/use-current-user.hook"
@@ -17,11 +17,11 @@ const PLACEHOLDER = [
   "0xeaa6b8d739b99c4d",
 ].join("\n")
 
-const nax = (axs) =>
+const nax = axs =>
   axs
     .trim()
     .split("\n")
-    .map((d) => d.trim())
+    .map(d => d.trim())
     .filter(Boolean)
 
 function fmtStatus(status) {
@@ -92,7 +92,7 @@ transaction(amount: UFix64, axs: [Address]) {
       ])
       setStatus(PENDING)
 
-      var unsub = fcl.tx(resp).subscribe((txStatus) => {
+      var unsub = fcl.tx(resp).subscribe(txStatus => {
         setTxStatus(txStatus.status)
         console.log("txStatus", txStatus)
       })
@@ -107,7 +107,7 @@ transaction(amount: UFix64, axs: [Address]) {
       console.error("SEED ERROR", error)
       setStatus(ERROR)
     } finally {
-      await new Promise((r) => setTimeout(r, 2000))
+      await new Promise(r => setTimeout(r, 2000))
       setStatus(DEFAULT)
       refetchAccount()
     }
@@ -127,8 +127,8 @@ transaction(amount: UFix64, axs: [Address]) {
       <div>
         <div style={{display: "flex", flexDirection: "column"}}>
           <label>Amount:</label>
-          <select id="amount" value={amount} onChange={(e) => setAmount(e.target.value)}>
-            {AMOUNTS.map((d) => (
+          <select id="amount" value={amount} onChange={e => setAmount(e.target.value)}>
+            {AMOUNTS.map(d => (
               <option key={d} value={d}>
                 {d} FLOW
               </option>
@@ -142,7 +142,7 @@ transaction(amount: UFix64, axs: [Address]) {
             cols="18"
             rows="15"
             value={addresses}
-            onChange={(e) => setAddresses(e.target.value)}
+            onChange={e => setAddresses(e.target.value)}
           />
         </div>
         {status === DEFAULT ? (
