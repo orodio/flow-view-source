@@ -1,4 +1,5 @@
 import {Suspense} from "react"
+import * as fcl from "@onflow/fcl"
 import {NavLink, Link, useParams} from "react-router-dom"
 import {withPrefix} from "@onflow/fcl"
 import {Item, Group} from "../../../comps/sidebar"
@@ -13,7 +14,13 @@ export function Account() {
   const nKeys = acct?.keys?.length ?? 0
 
   return (
-    <Group title="Account" icon="ghost" exact as={NavLink} to={accountUrl(params)}>
+    <Group
+      title={fcl.withPrefix(params.address)}
+      icon="ghost"
+      exact
+      as={NavLink}
+      to={accountUrl(params)}
+    >
       <Item icon="narwhal fa-flip-horizontal" as={Link} to={accountUrl(params)}>
         {fmtFlow(acct.balance)}
       </Item>
