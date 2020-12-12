@@ -1,22 +1,22 @@
 import React, {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import * as fcl from "@onflow/fcl"
-import {Root} from "../styles/root.comp"
-import {H1, H3, Muted, List, ListItem, Details, Detail} from "../styles/text.comp"
+import {Root} from "../../styles/root.comp"
+import {H1, H3, Muted, List, ListItem, Details, Detail} from "../../styles/text.comp"
 import {LockedTokens} from "./account/locked-tokens.comp"
-import {fmtFlow} from "../util/fmt-flow.util"
+import {fmtFlow} from "../../util/fmt-flow.util"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/mode-rust"
 import "ace-builds/src-noconflict/theme-nord_dark"
 
-const fmtCurve = (i) =>
+const fmtCurve = i =>
   ({
     2: "ECDSA_P256",
     3: "ECDSA_secp256k1",
   }[i] || "--")
 
-const fmtHash = (i) =>
+const fmtHash = i =>
   ({
     1: "SHA2_256",
     3: "SHA3_256",
@@ -91,7 +91,7 @@ export function Account() {
         )}
         {!!acct.keys.length && (
           <List>
-            {acct.keys.map((key) => {
+            {acct.keys.map(key => {
               return (
                 <ListItem key={key.publicKey} value={key.publicKey}>
                   <Details style={{margin: "5px 13px 13px 0"}}>

@@ -1,3 +1,7 @@
+// DEPRECATED PLEASE USE ./use-account.js
+// DEPRECATED PLEASE USE ./use-account.js
+// DEPRECATED PLEASE USE ./use-account.js
+
 import {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
 

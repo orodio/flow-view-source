@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react"
 import * as fcl from "@onflow/fcl"
-import {H3, Muted, List, ListItem, Details, Detail} from "../../styles/text.comp"
-import {fetchLockedTokens} from "../../flow/fetch-locked-tokens.script"
-import {fmtFlow} from "../../util/fmt-flow.util"
+import {H3, Muted, List, ListItem, Details, Detail} from "../../../styles/text.comp"
+import {fetchLockedTokens} from "../../../flow/fetch-locked-tokens.script"
+import {fmtFlow} from "../../../util/fmt-flow.util"
 
 const calcTotal = (acct, tokens) => {
   return fmtFlow(acct.balance)
@@ -23,7 +23,7 @@ export function LockedTokens({address}) {
   useEffect(() => {
     fetchLockedTokens(address)
       .then(setTokens)
-      .catch((d) => console.error(`fetchLockedTokens(${address})`, d))
+      .catch(d => console.error(`fetchLockedTokens(${address})`, d))
   }, [address])
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function LockedTokens({address}) {
     fcl
       .account(tokens.address)
       .then(setAcct)
-      .catch((d) => console.error(`getAccount(${address})`, d))
+      .catch(d => console.error(`getAccount(${address})`, d))
   }, [address, tokens])
 
   if (tokens == null || acct == null) return null

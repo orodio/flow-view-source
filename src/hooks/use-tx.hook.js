@@ -42,14 +42,22 @@ const EMPTY_DETAILS = {
   error: null,
 }
 
-const log = l => v => (console.log(l, v), v)
+const noop = () => {}
 
-export function useTx(fns = []) {
+export function useTx(fns = [], opts = {}) {
   const [status, setStatus] = useState(IDLE)
   const [txStatus, setTxStatus] = useState(IDLE)
   const [details, setDetails] = useState(EMPTY_DETAILS)
 
+  const onStart = opts.onStart || noop
+  const onSent = opts.onSent || noop
+  const onUpdate = opts.onUpdate || noop
+  const onSuccess = opts.onSuccess || noop
+  const onError = opts.onError || noop
+  const onComplete = opts.onComplete || noop
+
   async function trigger(args = []) {
+    onStart()
     setStatus(PROCESSING)
     setTxStatus(PROCESSING)
     setDetails(() => EMPTY_DETAILS)
@@ -65,6 +73,7 @@ export function useTx(fns = []) {
     try {
       setTxStatus(PENDING_AUTH)
       var txId = await fcl.send(fns).then(fcl.decode)
+      onSent(txId)
 
       setTxStatus(SUBMITTING_TO_CHAIN)
       // eslint-disable-next-line
@@ -75,13 +84,15 @@ export function useTx(fns = []) {
         setTxStatus(statusKeys(txStatus))
         // eslint-disable-next-line
         setDetails(details => ({...details, txStatus}))
+        onUpdate(txStatus)
       })
 
       await fcl
         .tx(txId)
         .onceSealed()
-        .then(_ => {
+        .then(async txStatus => {
           setStatus(SUCCESS)
+          onSuccess(txStatus)
           unsub()
         })
         .catch(error => {
@@ -89,6 +100,7 @@ export function useTx(fns = []) {
           throw error
         })
     } catch (error) {
+      onError(error)
       console.error("useTx", error, {fns})
       setStatus(ERROR)
       // eslint-disable-next-line
@@ -97,6 +109,7 @@ export function useTx(fns = []) {
       await sleep()
       setStatus(IDLE)
       setTxStatus(IDLE)
+      onComplete()
     }
   }
 

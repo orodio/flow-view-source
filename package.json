@@ -4,17 +4,17 @@
   "private": true,
   "dependencies": {
     "@onflow/config": "0.0.2",
-    "@onflow/fcl": "^0.0.67-alpha.16",
+    "@onflow/fcl": "^0.0.67-alpha.43",
     "@onflow/six-set-code": "0.0.3",
     "@onflow/six-transfer-tokens": "0.0.3",
     "@onflow/types": "0.0.4",
     "ace-builds": "^1.4.12",
-    "prismjs": "^1.21.0",
     "react": "17.0.1",
     "react-ace": "^9.2.0",
     "react-dom": "17.0.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.0",
+    "recoil": "^0.1.2",
     "styled-components": "5.2.0"
   },
   "scripts": {

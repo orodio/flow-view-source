@@ -1,12 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components"
-
-const GlobalStyle = createGlobalStyle`
-  html, body {
-    border:0;
-    margin:0;
-    font-family:"MonoLisa","JetBrains Mono","Fira Code",monospace;
-  }
-`
+import styled from "styled-components"
 
 const Foundation = styled.div`
   font-family: "MonoLisa", "JetBrains Mono", "Fira Code", monospace;
@@ -20,39 +12,35 @@ const Foundation = styled.div`
   box-sizing: border-box;
 `
 
-const Tag = styled.a`
-  position: absolute;
-  position: fixed;
-  bottom: 0;
-  right: 21px;
-  background: tomato;
-  font-family: inherit;
-  font-size: 13px;
-  line-height: 34px;
-  font-weight: bold;
-  color: var(--bg);
-  padding: 0 21px;
-  background: var(--fg);
-  border-radius: 3px 3px 0 0;
-  text-decoration: none;
+// const Tag = styled.a`
+//   position: absolute;
+//   position: fixed;
+//   bottom: 0;
+//   right: 21px;
+//   background: tomato;
+//   font-family: inherit;
+//   font-size: 13px;
+//   line-height: 34px;
+//   font-weight: bold;
+//   color: var(--bg);
+//   padding: 0 21px;
+//   background: var(--fg);
+//   border-radius: 3px 3px 0 0;
+//   text-decoration: none;
 
-  &:hover,
-  &:focus,
-  &:active {
-    background: var(--wow);
-    color: var(--fg);
-  }
-  display: none;
-`
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     background: var(--wow);
+//     color: var(--fg);
+//   }
+//   display: none;
+// `
 
 export function Root({children}) {
   return (
     <>
-      <GlobalStyle />
       <Foundation>{children}</Foundation>
-      <Tag href="https://www.patreon.com/qvvg" target="_blank" rel="noreferrer">
-        qvvg
-      </Tag>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {useTx, IDLE} from "../hooks/use-tx.hook"
-import {useCurrentUser} from "../hooks/use-current-user.hook"
+// import {useCurrentUser} from "../hooks/use-current-user.hook"
 import {Root} from "../styles/root.comp"
 import {Roll, Json, Button as Btn, A, List, ListItem} from "../styles/text.comp"
 import {CODE} from "@onflow/six-transfer-tokens"
