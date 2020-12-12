@@ -20,7 +20,7 @@ export function Contracts() {
   return (
     <Group
       title={`${contracts.length} Contracts`}
-      icon={acct.isProcessing ? `circle-notch fa-spin` : `toilet-paper fa-flip-horizontal`}
+      icon={acct.isProcessing ? `circle-notch fa-spin` : `book-heart`}
     >
       {contracts.map(name => (
         <Item key={name} icon="scroll-old" as={Link} to={contractUrl(params, name)}>
