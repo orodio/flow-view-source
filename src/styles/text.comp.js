@@ -55,6 +55,8 @@ export const Pre = styled.pre`
     bottom: 0;
     border-radius: 3px;
   }
+
+  ${p => p.bad && "color:var(--bad);"}
 `
 
 export const Json = ({children}) => {

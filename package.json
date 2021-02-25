@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@onflow/config": "0.0.2",
-    "@onflow/fcl": "^0.0.67-alpha.43",
+    "@onflow/fcl": "0.0.68-alpha.6",
     "@onflow/six-set-code": "0.0.3",
     "@onflow/six-transfer-tokens": "0.0.3",
     "@onflow/types": "0.0.4",
@@ -27,15 +27,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   }
 }
