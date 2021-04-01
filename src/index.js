@@ -6,6 +6,7 @@ import {RecoilRoot} from "recoil"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import {MainnetConfig} from "./config/mainnet-config.comp"
 import {TestnetConfig} from "./config/testnet-config.comp"
+import {CanarynetConfig} from "./config/canarynet-config.comp"
 import {GlobalStyles} from "./styles/global"
 
 import Account from "./pages/account"
@@ -14,7 +15,6 @@ import AccountContractNew from "./pages/account/contract-new"
 import AccountKeys from "./pages/account/keys"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
-import {Me} from "./pages/me.comp"
 import {Status} from "./pages/status.comp"
 import {Seed} from "./pages/seed.comp"
 import {Ledger} from "./pages/ledger.comp"
@@ -34,6 +34,7 @@ ReactDOM.render(
       <Router>
         <Route path="/mainnet/" component={MainnetConfig} />
         <Route path="/testnet/" component={TestnetConfig} />
+        <Route path="/canarynet/" component={CanarynetConfig} />
         <Switch>
           <Route exact path="/:env/account/Fx:address" component={Account} />
           <Route exact path="/:env/account/Fx:address/keys" component={AccountKeys}/>
@@ -47,20 +48,21 @@ ReactDOM.render(
 
           <Route exact path="/mainnet/tx/:txId" component={TxStatus} />
           <Route exact path="/testnet/tx/:txId" component={TxStatus} />
+          <Route exact path="/carnarynet/tx/:txId" component={TxStatus} />
 
           <Route exact path="/mainnet/event/:eventKey" component={Event} />
           <Route exact path="/testnet/event/:eventKey" component={Event} />
+          <Route exact path="/canarynet/event/:eventKey" component={Event} />
 
           <Route exact path="/mainnet/status" component={Status} />
           <Route exact path="/testnet/status" component={Status} />
-
-          <Route exact path="/mainnet/me" component={Me} />
-          <Route exact path="/testnet/me" component={Me} />
+          <Route exact path="/canarynet/status" component={Status} />
 
           <Route exact path="/testnet/seed" component={Seed} />
 
           <Route exact path="/mainnet/ledger" component={Ledger} />
           <Route exact path="/testnet/ledger" component={Ledger} />
+          <Route exact path="/canarynet/ledger" component={Ledger} />
 
           <Route component={NoMatch} />
         </Switch>
