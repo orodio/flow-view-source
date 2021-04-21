@@ -1501,15 +1501,16 @@
   dependencies:
     rlp "^2.2.4"
 
-"@onflow/fcl@0.0.68-alpha.6":
-  version "0.0.68-alpha.6"
-  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.68-alpha.6.tgz#6d0c5f7c06f7adc995107dc1f609dc607ed3f0a3"
-  integrity sha512-6ZpafRyqAp7293jKFiQSJR5uB2xrvSYxT7CDwkhtQvToceTwsm27JVnsIJMZFLoM0ECae63y+/j4HiF8S6oZxg==
+"@onflow/fcl@^0.0.68-alpha.20":
+  version "0.0.68-alpha.20"
+  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.68-alpha.20.tgz#b20b48238f95adaf1c10b365307c5887bf82d7e1"
+  integrity sha512-AtG5n/yTiGJqmJxA9+UXcValvr9v/KQK4xsH9r5A2v+Gylvv4KFFPHqe9wORFC2QhzYFncqEVtJYTsWXsIC+bw==
   dependencies:
     "@onflow/config" "0.0.2"
     "@onflow/interaction" "0.0.11"
     "@onflow/rlp" "0.0.3"
-    "@onflow/sdk" "0.0.45-alpha.9"
+    "@onflow/sdk" "0.0.45-alpha.19"
+    "@onflow/types" "^0.0.4"
     "@onflow/util-actor" "0.0.2"
     "@onflow/util-address" "0.0.0"
     "@onflow/util-invariant" "0.0.0"
@@ -1563,10 +1564,10 @@
     "@onflow/send" "0.0.20"
     "@qvvg/templar" "0.0.1"
 
-"@onflow/sdk@0.0.45-alpha.9":
-  version "0.0.45-alpha.9"
-  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.45-alpha.9.tgz#c9783a30d8a0ea7215b2ed62ceb6da929867a6e2"
-  integrity sha512-Q82G/WC2JnR1OqxogL6+hX5iusfB0hAF1zYKdTS9T3Q646Ijp2Mx7NInRahveKdoLpP4he9nwpIuottoykcMHw==
+"@onflow/sdk@0.0.45-alpha.19":
+  version "0.0.45-alpha.19"
+  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.45-alpha.19.tgz#cca00452a5eb62e98aff4d57840fb3be706e5ea6"
+  integrity sha512-XcQ5lwxR7wV5A/7d2NtoNlews0rU4kUT9e0iyn4Z1UWVo8GKo7dayPoPjJzZlaEDspcVPB8fzO5HEHK2uNSf1g==
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.14.0"
@@ -1606,7 +1607,7 @@
     "@onflow/sdk" "0.0.31"
     "@onflow/types" "0.0.4"
 
-"@onflow/types@0.0.4":
+"@onflow/types@0.0.4", "@onflow/types@^0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@onflow/types/-/types-0.0.4.tgz#d4a9c3e301d23182dd256b73d3679c952fe653f0"
   integrity sha512-47r0qTM45mR7FSvyEE0njGljkpgy3MCf/2W82pfZ/PTFGWr1nsGV/4j2bUfK9Sry4Ymz2W20iRZVP3xpqOhqGw==
