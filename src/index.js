@@ -17,7 +17,6 @@ import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 import {Status} from "./pages/status.comp"
 import {Seed} from "./pages/seed.comp"
-import {Ledger} from "./pages/ledger.comp"
 
 window.fcl = fcl
 window.t = t
@@ -59,10 +58,6 @@ ReactDOM.render(
           <Route exact path="/canarynet/status" component={Status} />
 
           <Route exact path="/testnet/seed" component={Seed} />
-
-          <Route exact path="/mainnet/ledger" component={Ledger} />
-          <Route exact path="/testnet/ledger" component={Ledger} />
-          <Route exact path="/canarynet/ledger" component={Ledger} />
 
           <Route component={NoMatch} />
         </Switch>
