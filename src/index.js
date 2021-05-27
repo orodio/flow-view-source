@@ -23,6 +23,10 @@ window.t = t
 fcl.currentUser().subscribe(user => console.log("Current User", user))
 window.addEventListener("FLOW::TX", d => console.log(d.type, d.detail.delta + "ms", d.detail.txId))
 
+window.xform = (value, from, to) => {
+  return Buffer.from(value, from).toString(to)
+}
+
 const NoMatch = () => <div>Sadly No</div>
 
 // prettier-ignore
