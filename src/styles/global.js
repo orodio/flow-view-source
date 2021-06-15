@@ -40,4 +40,10 @@ export const GlobalStyles = createGlobalStyle`
     background: var(--bg);
     color: var(--fg);
   }
+
+  progress {
+    -webkit-appearance: none;
+    background: var(--fg);
+    color: blue;
+  }
 `

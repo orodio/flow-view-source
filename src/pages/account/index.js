@@ -1,12 +1,12 @@
-import {Suspense} from "react"
 import {useParams} from "react-router-dom"
-import {useAccount} from "../../hooks/use-account"
 import {Base} from "../../comps/base"
 import {withPrefix} from "@onflow/fcl"
 import {Wat} from "../../comps/wat"
 import {SideBar} from "./sidebar"
-import {Group, Item, Icon} from "../../comps/sidebar"
-import {fmtFlow} from "../../util/fmt-flow.util"
+import {Group, Item} from "../../comps/sidebar"
+
+import {useFlowBalance} from "../../hooks/use-flow-balance"
+import {useFusdBalance} from "../../hooks/use-fusd-balance"
 
 const Header = () => {
   const {env, address} = useParams()
@@ -31,13 +31,15 @@ const Header = () => {
 
 export function Page() {
   const {address} = useParams()
-  const acct = useAccount(address)
+  const flowBalance = useFlowBalance(address)
+  const fusdBalance = useFusdBalance(address)
 
   return (
     <Base sidebar={<SideBar />} header={<Header />}>
       <div style={{padding: "13px"}}>
         <Group icon="sack" title="Fungible Tokens">
-          <Item icon="narwhal fa-flip-horizontal">Primary Balance: {fmtFlow(acct.balance)}</Item>
+          <Item icon="narwhal fa-flip-horizontal">{flowBalance}</Item>
+          <Item icon="money-bill">{fusdBalance}</Item>
         </Group>
       </div>
     </Base>
@@ -45,9 +47,5 @@ export function Page() {
 }
 
 export default function WrappedPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Page />
-    </Suspense>
-  )
+  return <Page />
 }

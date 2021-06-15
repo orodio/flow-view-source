@@ -1,11 +1,11 @@
-import {Suspense} from "react"
+import * as fcl from "@onflow/fcl"
 import {useParams} from "react-router-dom"
 import {Base} from "../../comps/base"
-import {withPrefix} from "@onflow/fcl"
-import {useAccount} from "../../hooks/use-account"
+import {Bad} from "../../styles/text.comp"
 import {Wat} from "../../comps/wat"
 import {SideBar} from "./sidebar"
-import {Group, Item, Icon} from "../../comps/sidebar"
+import {Group, Item} from "../../comps/sidebar"
+import {useAccountKeys} from "../../hooks/use-account-keys"
 
 const Header = () => {
   const {env, address} = useParams()
@@ -20,10 +20,10 @@ const Header = () => {
         },
         {label: "account"},
         {
-          to: `/${env}/account/${withPrefix(address)}`,
-          label: withPrefix(address),
+          to: `/${env}/account/${fcl.withPrefix(address)}`,
+          label: fcl.withPrefix(address),
         },
-        {label: "keys", to: `/${env}/account/${withPrefix(address)}/keys`},
+        {label: "keys", to: `/${env}/account/${fcl.withPrefix(address)}/keys`},
       ]}
     />
   )
@@ -43,19 +43,23 @@ const fmtHash = i =>
 
 export function Page() {
   const {address} = useParams()
-  const acct = useAccount(address)
-
-  console.log("ACCOUNT", acct)
+  const keys = useAccountKeys(address)
 
   return (
     <Base sidebar={<SideBar />} header={<Header />}>
       <div style={{padding: "13px"}}>
-        {acct.keys.map(key => (
-          <Group title={key.publicKey} icon="key">
+        {(keys || []).map(key => (
+          <Group title={key.publicKey} icon="key" key={key.index}>
+            {key.revoked && (
+              <Item icon="folder-times">
+                <Bad>REVOKED</Bad>
+              </Item>
+            )}
             <Item icon="hashtag">KeyId: {key.index}</Item>
             <Item icon="weight-hanging">Weight: {key.weight}/1000</Item>
             <Item icon="wave-sine">Curve: {fmtCurve(key.signAlgo)}</Item>
             <Item icon="blender">Hash: {fmtHash(key.hashAlgo)}</Item>
+            <Item icon="dna">Sequence Number: {key.sequenceNumber}</Item>
           </Group>
         ))}
       </div>
@@ -64,9 +68,5 @@ export function Page() {
 }
 
 export default function WrappedPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Page />
-    </Suspense>
-  )
+  return <Page />
 }

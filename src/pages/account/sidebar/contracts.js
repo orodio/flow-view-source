@@ -1,27 +1,20 @@
-import {Suspense} from "react"
+import * as fcl from "@onflow/fcl"
 import {NavLink as Link, useParams} from "react-router-dom"
-import {withPrefix} from "@onflow/fcl"
 import {Item, Group, HR} from "../../../comps/sidebar"
 import {useCurrentUser} from "../../../hooks/use-current-user"
-import {useAccount} from "../../../hooks/use-account"
+import {useAccountContractsLabels} from "../../../hooks/use-account-contracts-labels"
 
-const accountUrl = params => `/${params.env}/account/${withPrefix(params.address)}`
+const accountUrl = params => `/${params.env}/account/${fcl.withPrefix(params.address)}`
 const contractUrl = (params, name) => `${accountUrl(params)}/contract/${name}`
 
 export function Contracts() {
   const params = useParams()
   const user = useCurrentUser()
-  const acct = useAccount(params.address)
-
-  const IS_CURRENT_USER = withPrefix(user.addr) === withPrefix(params.address)
-
-  const contracts = Object.keys(acct?.contracts ?? {})
+  const contracts = useAccountContractsLabels(params.address)
+  const IS_CURRENT_USER = fcl.withPrefix(user.addr) === fcl.withPrefix(params.address)
 
   return (
-    <Group
-      title={`${contracts.length} Contracts`}
-      icon={acct.isProcessing ? `circle-notch fa-spin` : `book-heart`}
-    >
+    <Group title={`${contracts.length} Contracts`} icon="book-heart">
       {contracts.map(name => (
         <Item key={name} icon="scroll-old" as={Link} to={contractUrl(params, name)}>
           {name}
@@ -46,9 +39,5 @@ export function Loading() {
 }
 
 export default function WrappedContracts() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Contracts />
-    </Suspense>
-  )
+  return <Contracts />
 }

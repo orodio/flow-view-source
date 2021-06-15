@@ -29,7 +29,11 @@ const Inner = styled.div`
   flex-direction: column;
 `
 
-const GroupStyle = styled.div``
+const GroupStyle = styled.div`
+  & + & {
+    margin-top: 21px;
+  }
+`
 
 const GroupBody = styled.div`
   position: relative;
