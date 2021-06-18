@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react"
-import * as fcl from "@onflow/fcl"
-import * as t from "@onflow/types"
+import {query} from "@onflow/fcl"
 
 const PENDING = "PENDING"
 const SUCCESS = "SUCCESS"
@@ -11,21 +10,23 @@ export function useScripts() {
   const [message, setMessage] = useState(null)
 
   useEffect(() => {
-    fcl
-      .send([
-        fcl.args([fcl.arg(6, t.Int), fcl.arg(3, t.Int)]),
-        fcl.script`
-          pub fun main(a: Int, b: Int): Int {
-            return a + b
-          }
-        `,
-      ])
-      .then(fcl.decode)
-      .then(() => setStatus(SUCCESS))
-      .catch((error) => {
-        setStatus(ERROR)
-        setMessage(error.message)
-      })
+    // prettier-ignore
+    query({
+      cadence: `
+        pub fun main(a: Int, b: Int): Int {
+          return a + b
+        }
+      `,
+      args: (arg, t) => [
+        arg(5, t.Int),
+        arg(6, t.Int),
+      ],
+    }).then(() => {
+      setStatus(SUCCESS)
+    }).catch(error => {
+      setStatus(ERROR)
+      setMessage(error.message)
+    })
   }, [])
 
   return [status, message]

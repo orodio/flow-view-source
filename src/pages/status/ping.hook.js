@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import * as fcl from "@onflow/fcl"
+import {send, ping} from "@onflow/fcl"
 
 const PENDING = "PENDING"
 const SUCCESS = "SUCCESS"
@@ -10,10 +10,9 @@ export function usePing() {
   const [message, setMessage] = useState(null)
 
   useEffect(() => {
-    fcl
-      .send([fcl.ping()])
+    send([ping()])
       .then(() => setStatus(SUCCESS))
-      .catch((error) => {
+      .catch(error => {
         setStatus(ERROR)
         setMessage(error.message)
       })

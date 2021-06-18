@@ -16,7 +16,6 @@ import AccountKeys from "./pages/account/keys"
 import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 import {Status} from "./pages/status.comp"
-import {Seed} from "./pages/seed.comp"
 
 window.fcl = fcl
 window.t = t
@@ -60,8 +59,6 @@ ReactDOM.render(
           <Route exact path="/mainnet/status" component={Status} />
           <Route exact path="/testnet/status" component={Status} />
           <Route exact path="/canarynet/status" component={Status} />
-
-          <Route exact path="/testnet/seed" component={Seed} />
 
           <Route component={NoMatch} />
         </Switch>
