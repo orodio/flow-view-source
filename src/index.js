@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import * as fcl from "@onflow/fcl"
-import * as t from "@onflow/types"
 import {RecoilRoot} from "recoil"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import {MainnetConfig} from "./config/mainnet-config.comp"
@@ -18,7 +17,12 @@ import {Event} from "./pages/event.comp"
 import {Status} from "./pages/status.comp"
 
 window.fcl = fcl
-window.t = t
+window.t = fcl.t
+window.query = fcl.query
+window.mutate = fcl.mutate
+window.config = fcl.config
+window.currentUser = fcl.currentUser
+
 fcl.currentUser().subscribe(user => console.log("Current User", user))
 window.addEventListener("FLOW::TX", d => console.log(d.type, d.detail.delta + "ms", d.detail.txId))
 

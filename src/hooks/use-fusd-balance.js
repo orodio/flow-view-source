@@ -29,14 +29,9 @@ export function useFusdBalance(address) {
           import FungibleToken from 0xFungibleToken
 
           pub fun main(addr: Address): UFix64 {
-            let cap = getAccount(addr)
+            return getAccount(addr)
               .getCapability<&{FungibleToken.Balance}>(${PATH})
-
-            if let moneys = cap.borrow() {
-              return moneys.balance
-            } else {
-              return UFix64(0.0)
-            }
+              .borrow()?.balance ?? 0.0
           }
         `,
       })
