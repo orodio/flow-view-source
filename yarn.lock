@@ -1523,22 +1523,14 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@onflow/config@0.0.2", "@onflow/config@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@onflow/config/-/config-0.0.2.tgz#caed7df27e9258ce2d4eae43f5e6f22caa119547"
-  integrity sha512-H/+yrAalzEnMWkubiWsDdWytKSzd+OfRCddTlaRUelxfXhcfw2QWegH9N8EzeKfKXcQ6PLzvu9vQwhFxCZTE8Q==
+"@onflow/fcl@^0.0.73":
+  version "0.0.73"
+  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.73.tgz#c90b86af4527559ddc0e2e2592203edbfbda926d"
+  integrity sha512-A6HNPgfck51uBMyhuKoOQaH9Ro1Ma7iE45Q5imrjeAT0Jk1DLUgG78M28oFpt+mlCwhYFsLuyMVmVPwGsAL64w==
   dependencies:
-    "@onflow/util-actor" "0.0.2"
-
-"@onflow/fcl@^0.0.73-alpha.1":
-  version "0.0.73-alpha.1"
-  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.73-alpha.1.tgz#d22c2beb4f94037c9b834b0a5920934b6f14d365"
-  integrity sha512-QLOcHQksmn+GrcID+2yq7CDojXjIRJztZ7+Omg/cB/UrhNzQu2nzSo+DJKL+IOEsTUaJYmEyUgc0YHT52pAOQA==
-  dependencies:
-    "@onflow/config" "0.0.2"
     "@onflow/interaction" "0.0.11"
     "@onflow/rlp" "0.0.3"
-    "@onflow/sdk" "0.0.48"
+    "@onflow/sdk" "0.0.50"
     "@onflow/types" "^0.0.4"
     "@onflow/util-actor" "0.0.2"
     "@onflow/util-address" "0.0.0"
@@ -1564,16 +1556,16 @@
   resolved "https://registry.yarnpkg.com/@onflow/rlp/-/rlp-0.0.3.tgz#42e10944309732bfd9acca79710c8210b9aabd4c"
   integrity sha512-oAf0VEiMjX8eC6Vd66j1BdGYTHOM6UBaS/sLSScnc7bKX5gICqe2gtEsCeJVE9rUzRk3GD3JqXRnPAW6YFWd/Q==
 
-"@onflow/sdk@0.0.48":
-  version "0.0.48"
-  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.48.tgz#d73ee19cebdc40cdb28214bf578869bb01777fa2"
-  integrity sha512-rYlXxXhpNM01DgFFjI6DJ8HiBC5/WFhCKivclvvkK6Z7PfOQXeQf31Aa8jxNUaAzSa5E7Azdvf/bpFyYjaaIyQ==
+"@onflow/sdk@0.0.50":
+  version "0.0.50"
+  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.50.tgz#86dbd252c76b7d3b6860e52254e683004bb32a31"
+  integrity sha512-A3g43Qx7OgeFfpgz9Tk4bJIE2xJ6zWe6FPGAm6Al+5OP+TNU5vdLcxKNgR+Pk2u+QVCYBaA0Jf4pncF9+K+pVw==
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.14.0"
-    "@onflow/config" "^0.0.2"
     "@onflow/protobuf" "^0.1.8"
     "@onflow/rlp" "^0.0.3"
+    "@onflow/util-actor" "0.0.2"
     "@onflow/util-address" "^0.0.0"
     "@onflow/util-invariant" "^0.0.0"
     "@onflow/util-template" "0.0.1"

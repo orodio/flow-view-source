@@ -36,7 +36,7 @@ export function useTransactions() {
         arg(7, t.Int),
         arg(2, t.Int),
       ],
-      limit: 35,
+      limit: 55,
     }).then((resp) => {
       setStatus(SUCCESS)
       setTxId(resp.transactionId)
