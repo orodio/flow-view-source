@@ -1523,14 +1523,14 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@onflow/fcl@0.0.74-alpha.1":
-  version "0.0.74-alpha.1"
-  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.74-alpha.1.tgz#5b090ee9e502aa9b088e126d5c373d4f203c9062"
-  integrity sha512-ZqRM4F4qAqAZu/TdWjJUCmERk78NVMKuLXrVCHrf9TR8RQ61t5x0Sq3dF0mPvtbpfBScjeUgrEsF5qcUnrXu3Q==
+"@onflow/fcl@0.0.73":
+  version "0.0.73"
+  resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-0.0.73.tgz#c90b86af4527559ddc0e2e2592203edbfbda926d"
+  integrity sha512-A6HNPgfck51uBMyhuKoOQaH9Ro1Ma7iE45Q5imrjeAT0Jk1DLUgG78M28oFpt+mlCwhYFsLuyMVmVPwGsAL64w==
   dependencies:
     "@onflow/interaction" "0.0.11"
     "@onflow/rlp" "0.0.3"
-    "@onflow/sdk" "0.0.51-alpha.1"
+    "@onflow/sdk" "0.0.50"
     "@onflow/types" "^0.0.4"
     "@onflow/util-actor" "0.0.2"
     "@onflow/util-address" "0.0.0"
@@ -1556,10 +1556,10 @@
   resolved "https://registry.yarnpkg.com/@onflow/rlp/-/rlp-0.0.3.tgz#42e10944309732bfd9acca79710c8210b9aabd4c"
   integrity sha512-oAf0VEiMjX8eC6Vd66j1BdGYTHOM6UBaS/sLSScnc7bKX5gICqe2gtEsCeJVE9rUzRk3GD3JqXRnPAW6YFWd/Q==
 
-"@onflow/sdk@0.0.51-alpha.1":
-  version "0.0.51-alpha.1"
-  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.51-alpha.1.tgz#4b3f17ebe210b6865c3dc913d3e2cacc3b156f14"
-  integrity sha512-wAEnhnyJzpiH8SB48P7xjhkYo63huaq8oSQfwEkDJeqJ+1nv/pLQmCQFd3C9u4veeZhG/SHAH7K3R1t+LVTADg==
+"@onflow/sdk@0.0.50":
+  version "0.0.50"
+  resolved "https://registry.yarnpkg.com/@onflow/sdk/-/sdk-0.0.50.tgz#86dbd252c76b7d3b6860e52254e683004bb32a31"
+  integrity sha512-A3g43Qx7OgeFfpgz9Tk4bJIE2xJ6zWe6FPGAm6Al+5OP+TNU5vdLcxKNgR+Pk2u+QVCYBaA0Jf4pncF9+K+pVw==
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.14.0"
