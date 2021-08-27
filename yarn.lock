@@ -1578,10 +1578,10 @@
     "mkdirp" "^1.0.4"
     "rimraf" "^3.0.2"
 
-"@onflow/fcl@^0.0.77-alpha.1":
-  "integrity" "sha512-AbuPeBvkTHUozd4U6AtN2kGKK74e0NMfsmUFRqCCj8wuLlydwaCgQdoND+/e6yGNcYVLPU1M3O0Qmn+IW0kUsg=="
-  "resolved" "https://registry.npmjs.org/@onflow/fcl/-/fcl-0.0.77-alpha.1.tgz"
-  "version" "0.0.77-alpha.1"
+"@onflow/fcl@^0.0.77-alpha.3":
+  "integrity" "sha512-5+H/0s5He9GaPCh2uDTE/HqRDIL20X4OI8Id1B8EWIr4K9Hd6ZRreANsvS1CUflZDphARioTryvGFXc0jJ4oVg=="
+  "resolved" "https://registry.npmjs.org/@onflow/fcl/-/fcl-0.0.77-alpha.3.tgz"
+  "version" "0.0.77-alpha.3"
   dependencies:
     "@onflow/interaction" "0.0.11"
     "@onflow/rlp" "0.0.3"
