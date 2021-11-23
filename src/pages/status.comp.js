@@ -6,7 +6,7 @@ import {usePing} from "./status/ping.hook"
 import {useScripts} from "./status/scripts.hook"
 import {useTransactions} from "./status/transactions.hook"
 
-const status = (status) => {
+const status = status => {
   if (status === "PENDING") return <Roll label={status} />
   if (status === "SUCCESS") return <Good>{status}</Good>
   if (status === "ERROR") return <Bad>{status}</Bad>
@@ -18,7 +18,7 @@ const status = (status) => {
   return status
 }
 
-const more = (message) => {
+const more = message => {
   if (message == null) return null
   return <Pre>{message}</Pre>
 }
@@ -36,7 +36,7 @@ function fmtStatus(status) {
 export function Status() {
   const env = useConfig("env")
   const api = useConfig("accessNode.api")
-  const dis = useConfig("challenge.handshake")
+  const dis = useConfig("discovery.wallet")
 
   const [pingStatus, pingMessage] = usePing()
   const [scriptsStatus, scriptsMessage] = useScripts()
@@ -49,9 +49,9 @@ export function Status() {
         <span>{env}</span>
       </H1>
       <List>
-        <ListItem label="Chain" value={env} />
-        <ListItem label="Access Node" value={api} />
-        <ListItem label="Wallet Discovery" value={dis} />
+        <ListItem label="chain" value={env} />
+        <ListItem label="accessNode.api" value={api} />
+        <ListItem label="discovery.wallet" value={dis} />
       </List>
       <div>
         <H3>
