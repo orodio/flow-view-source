@@ -46,4 +46,8 @@ export const GlobalStyles = createGlobalStyle`
     background: var(--fg);
     color: blue;
   }
+
+  label > input {
+    margin-right: 0.75em;
+  }
 `

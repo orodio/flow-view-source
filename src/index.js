@@ -16,6 +16,8 @@ import {TxStatus} from "./pages/tx-status.comp"
 import {Event} from "./pages/event.comp"
 import {Status} from "./pages/status.comp"
 
+import {Default} from "./comps/default"
+
 window.fcl = fcl
 window.t = fcl.t
 window.query = fcl.query
@@ -30,7 +32,7 @@ window.xform = (value, from, to) => {
   return Buffer.from(value, from).toString(to)
 }
 
-const NoMatch = () => <div>Sadly No</div>
+const NoMatch = () => <Default/>
 
 // prettier-ignore
 ReactDOM.render(
