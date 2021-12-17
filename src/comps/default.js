@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useState } from "react"
-import {H1, H2, Muted, Good} from "../styles/text.comp"
+import { H1, H2, Muted, Good } from "../styles/text.comp"
 
 const Root = styled.div`
   position: absolute;
@@ -31,7 +31,33 @@ export function Default() {
   const [account, setAccount] = useState("");
   const [tx, setTx] = useState("");
   const [event, setEvent] = useState("");
-  
+
+  function goTo(field) {
+    let url;
+
+    switch (field) {
+      case 'account':
+        url = `/${environment}/account/${account}`
+        break;
+      case 'tx':
+        url = `/${environment}/tx/${tx}`
+        break;
+      case 'event':
+        url = `/${environment}/event/${event}`
+        break;
+      default:
+        break;
+    }
+
+    window.location.href = url;
+  }
+
+  const handleKeyDown = (event, field) => {
+    if (event.key === 'Enter') {
+      goTo(field)
+    }
+  }
+
   return (
     <Root>
       <H1>flow-view-source</H1>
@@ -44,7 +70,7 @@ export function Default() {
         />
         testnet <Status href="/testnet/status"><small><Good>STATUS</Good></small></Status>
       </label>
-      <br/>
+      <br />
       <label>
         <input type="radio" name="environment"
           defaultChecked={environment === "mainnet"}
@@ -52,7 +78,7 @@ export function Default() {
         />
         mainnet <Status href="/mainnet/status"><small><Good>STATUS</Good></small></Status>
       </label>
-      <br/>
+      <br />
       <label>
         <input type="radio" name="environment"
           defaultChecked={environment === "canarynet"}
@@ -63,17 +89,17 @@ export function Default() {
 
       <div>
 
-      <P><strong>Account</strong></P>
-      <input type="text" placeholder="" onChange={event => setAccount(event.target.value)}/><button onClick={() => window.location = `${environment}/account/${account}`}>GO</button>
-      
-      <P><strong>Transaction</strong></P>
-      <input type="text" placeholder="" onChange={event => setTx(event.target.value)}/><button onClick={() => window.location = `${environment}/tx/${tx}`}>GO</button>
-      
-      <P><strong>Event</strong></P>
-      <input type="text" placeholder="" onChange={event => setEvent(event.target.value)}/><button onClick={() => window.location = `${environment}/event/${event}`}>GO</button>
-      
+        <P><strong>Account</strong></P>
+        <input type="text" placeholder="" onChange={event => setAccount(event.target.value)} onKeyDown={(e) => handleKeyDown(e, 'account')} /><button onClick={() => goTo('account')}>GO</button>
+
+        <P><strong>Transaction</strong></P>
+        <input type="text" placeholder="" onChange={event => setTx(event.target.value)} onKeyDown={(e) => handleKeyDown(e, 'tx')} /><button onClick={() => goTo('tx') }>GO</button>
+
+        <P><strong>Event</strong></P>
+        <input type="text" placeholder="" onChange={event => setEvent(event.target.value)} onKeyDown={(e) => handleKeyDown(e, 'event')} /><button onClick={() => goTo('event') }>GO</button>
+
       </div>
-      
+
     </Root>
   )
 }
