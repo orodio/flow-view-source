@@ -1578,91 +1578,137 @@
     "mkdirp" "^1.0.4"
     "rimraf" "^3.0.2"
 
-"@onflow/fcl@^0.0.78-alpha.8":
-  "integrity" "sha512-D2tMl2kpoWcXvjGQzuPH78ZEKGt1lh/TXqWyxFRZQZYLlWL/MbyJOPOa3fXDjnO2mxgkXtt8whR5qxDiXxiwUg=="
-  "resolved" "https://registry.npmjs.org/@onflow/fcl/-/fcl-0.0.78-alpha.8.tgz"
-  "version" "0.0.78-alpha.8"
+"@onflow/config@^1.0.1":
+  "integrity" "sha512-t7HZ+Dzg6fyLv6uo+EJy2l2aB6l/p+lzjm+PTw+0aCMN59SNVYzCV1FdQNT7yhhz3nqtkFCwDMn6nul5R0XVBQ=="
+  "resolved" "https://registry.npmjs.org/@onflow/config/-/config-1.0.1.tgz"
+  "version" "1.0.1"
   dependencies:
+    "@onflow/util-actor" "^1.0.1"
+
+"@onflow/fcl@^1.0.2":
+  "integrity" "sha512-QzK6G5ISwns08rRc2p7N2BB0icLm5dGjzEtdU7UmM+j8gFh0DQh3T/2XMopcPLMIwuIzrY7OhlSEgoBtqTeQRw=="
+  "resolved" "https://registry.npmjs.org/@onflow/fcl/-/fcl-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@onflow/config" "^1.0.1"
     "@onflow/interaction" "0.0.11"
-    "@onflow/rlp" "0.0.3"
-    "@onflow/sdk" "0.0.56-alpha.1"
-    "@onflow/types" "0.0.6"
-    "@onflow/util-actor" "0.0.2"
-    "@onflow/util-address" "0.0.0"
-    "@onflow/util-invariant" "0.0.0"
-    "@onflow/util-template" "0.0.1"
-    "@onflow/util-uid" "0.0.1"
+    "@onflow/rlp" "^1.0.1"
+    "@onflow/sdk" "^1.0.1"
+    "@onflow/types" "^1.0.1"
+    "@onflow/util-actor" "^1.0.1"
+    "@onflow/util-address" "^1.0.1"
+    "@onflow/util-invariant" "^1.0.1"
+    "@onflow/util-template" "^1.0.1"
+    "@onflow/util-uid" "^1.0.1"
 
 "@onflow/interaction@0.0.11":
   "integrity" "sha512-Xuq1Mmx6Wyba/F/L+QLQs0yJeQDsIDwy5SKk5vrCuVgIj0yD8k506g5L8ODrbM1LWll8i0tQsoOi0F85vNl5sA=="
   "resolved" "https://registry.yarnpkg.com/@onflow/interaction/-/interaction-0.0.11.tgz"
   "version" "0.0.11"
 
-"@onflow/protobuf@^0.1.8":
-  "integrity" "sha512-Taww31RrpJMr3fkWgF2HR2TcRbAoPbMjwRYt9IlYknyRX5YTzpaU35petdqDRfxwmfY9mRxHbiInujX4aV02Hw=="
-  "resolved" "https://registry.npmjs.org/@onflow/protobuf/-/protobuf-0.1.8.tgz"
-  "version" "0.1.8"
+"@onflow/protobuf@^1.0.0":
+  "integrity" "sha512-HKF96MpkuAppyS1V+iWdWtsrwUTDlg3j1rH7AtILu5VsXAGQyfLDncZ5S+/qKYuPVPLxkp6C57Gujg/uRZGLaQ=="
+  "resolved" "https://registry.npmjs.org/@onflow/protobuf/-/protobuf-1.0.0.tgz"
+  "version" "1.0.0"
   dependencies:
     "@improbable-eng/grpc-web" "^0.12.0"
+    "elliptic" "^6.5.4"
     "google-protobuf" "^3.11.4"
 
-"@onflow/rlp@^0.0.3", "@onflow/rlp@0.0.3":
-  "integrity" "sha512-oAf0VEiMjX8eC6Vd66j1BdGYTHOM6UBaS/sLSScnc7bKX5gICqe2gtEsCeJVE9rUzRk3GD3JqXRnPAW6YFWd/Q=="
-  "resolved" "https://registry.npmjs.org/@onflow/rlp/-/rlp-0.0.3.tgz"
-  "version" "0.0.3"
+"@onflow/rlp@^1.0.1":
+  "integrity" "sha512-n4zEU8e08isWfC6F2FL4wduIFoMgqJQXTHI93tUTR3Fe7u50qlvkX4FidNC87f5klkhSWrypqg8/+7wL+QHmeQ=="
+  "resolved" "https://registry.npmjs.org/@onflow/rlp/-/rlp-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "buffer" "^6.0.3"
 
-"@onflow/sdk@0.0.56-alpha.1":
-  "integrity" "sha512-MRpnYI8q5UBePQ2x/xPdg7W2L7yaMrIsAhxC91UrJvuifDUSv5Zpt8HYa//w8bYzEygOUeE3lk1e9LEzk2+oGg=="
-  "resolved" "https://registry.npmjs.org/@onflow/sdk/-/sdk-0.0.56-alpha.1.tgz"
-  "version" "0.0.56-alpha.1"
+"@onflow/sdk@^1.0.1":
+  "integrity" "sha512-mlQ12cLAqg+ekIJU1U9JOyFbsouuRrbyLFd2oM84F1++5j3EnD2u2PihohUL6bXtQbaLSWNnvIfQBmtMIzuQZQ=="
+  "resolved" "https://registry.npmjs.org/@onflow/sdk/-/sdk-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "@onflow/config" "^1.0.1"
+    "@onflow/rlp" "^1.0.1"
+    "@onflow/transport-http" "^1.1.0"
+    "@onflow/util-actor" "^1.0.1"
+    "@onflow/util-address" "^1.0.1"
+    "@onflow/util-invariant" "^1.0.1"
+    "@onflow/util-logger" "^1.0.1"
+    "@onflow/util-template" "^1.0.1"
+    "deepmerge" "^4.2.2"
+    "sha3" "^2.1.4"
+
+"@onflow/transport-grpc@^1.0.1":
+  "integrity" "sha512-Ik9RmVDv7VHo2QP3pB+zcWgOefatEbX5QXUcf5ydLkcz2MC1WKcJ2aKisJtbQhPa4+8MfJ5gIRMy9x7bIpej4g=="
+  "resolved" "https://registry.npmjs.org/@onflow/transport-grpc/-/transport-grpc-1.0.1.tgz"
+  "version" "1.0.1"
   dependencies:
     "@improbable-eng/grpc-web" "^0.14.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.14.0"
-    "@onflow/protobuf" "^0.1.8"
-    "@onflow/rlp" "^0.0.3"
-    "@onflow/util-actor" "0.0.2"
-    "@onflow/util-address" "^0.0.0"
-    "@onflow/util-invariant" "^0.0.0"
-    "@onflow/util-template" "0.0.1"
-    "deepmerge" "^4.2.2"
-    "sha3" "^2.1.4"
+    "@onflow/protobuf" "^1.0.0"
+    "@onflow/rlp" "^1.0.1"
+    "@onflow/util-address" "^1.0.1"
+    "@onflow/util-invariant" "^1.0.1"
+    "@onflow/util-template" "^1.0.1"
+
+"@onflow/transport-http@^1.1.0":
+  "integrity" "sha512-+Qejt1flUpB1B4sS1uFA9RNuL5+ZrOXC/1EyH2UpwuTZ4MIN3ATCVWiGaHr+LydgHzcBKugkiQLxAVYbBtFq6A=="
+  "resolved" "https://registry.npmjs.org/@onflow/transport-http/-/transport-http-1.2.0.tgz"
+  "version" "1.2.0"
+  dependencies:
+    "@onflow/util-address" "^1.0.1"
+    "@onflow/util-invariant" "^1.0.1"
+    "@onflow/util-node-http-modules" "^1.0.2"
+    "@onflow/util-template" "^1.0.1"
+
+"@onflow/types@^1.0.1":
+  "integrity" "sha512-1fmNUIqi6shXs0OCt0nouXgg0y/PtZoQp8128sOtB5zGdzaTwiluoYZMNtashdTQbqY4ZssTMJjSObPWhyIzAA=="
+  "resolved" "https://registry.npmjs.org/@onflow/types/-/types-1.0.1.tgz"
+  "version" "1.0.1"
 
 "@onflow/types@0.0.4":
   "integrity" "sha512-47r0qTM45mR7FSvyEE0njGljkpgy3MCf/2W82pfZ/PTFGWr1nsGV/4j2bUfK9Sry4Ymz2W20iRZVP3xpqOhqGw=="
   "resolved" "https://registry.yarnpkg.com/@onflow/types/-/types-0.0.4.tgz"
   "version" "0.0.4"
 
-"@onflow/types@0.0.6":
-  "integrity" "sha512-2eBrmqiFO37EUOJvzksygP8Wu6lL/m9az36AF0qYdGQW/79KGCHBCchUsIzxyGt8UDXl/dgnIcMkiTH7tWZqXg=="
-  "resolved" "https://registry.npmjs.org/@onflow/types/-/types-0.0.6.tgz"
-  "version" "0.0.6"
-
-"@onflow/util-actor@0.0.2":
-  "integrity" "sha512-NV3zPXQue3FqVgcIIMo6ifJOiP3hVSQTaR4ZrWLFU5iAZ/L73cTtBMbCB4BUFOe20ALtF2c9PFmpNVowCYV+nw=="
-  "resolved" "https://registry.npmjs.org/@onflow/util-actor/-/util-actor-0.0.2.tgz"
-  "version" "0.0.2"
+"@onflow/util-actor@^1.0.1":
+  "integrity" "sha512-iGvwLsG33dZrglKaCqqCXcopUEzUQMy2tJum4sYu7grjZkzHlvayVUCbudgkPeVe7JrB7qholA/Fj6hUI2rMXw=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-actor/-/util-actor-1.0.1.tgz"
+  "version" "1.0.1"
   dependencies:
     "queue-microtask" "1.1.2"
 
-"@onflow/util-address@^0.0.0", "@onflow/util-address@0.0.0":
-  "integrity" "sha512-Lzbw/wV3O1fmfXYF2q6iGLgHz/7ATsLXOHceP5tzeEAKNf+srdtTNJv5jhNGhpFFAtQ6TcomXURVMhUg+/4YbA=="
-  "resolved" "https://registry.npmjs.org/@onflow/util-address/-/util-address-0.0.0.tgz"
-  "version" "0.0.0"
+"@onflow/util-address@^1.0.1":
+  "integrity" "sha512-KanTfsZTBS4iETegtNWDfmQEXd7FapSyTm//N0tdF6hVoTxLI/DNd0Y39adhQasAyrO294q/I72wQUVO+WT7Fg=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-address/-/util-address-1.0.1.tgz"
+  "version" "1.0.1"
 
-"@onflow/util-invariant@^0.0.0", "@onflow/util-invariant@0.0.0":
-  "integrity" "sha512-ZCt+NqLdeHt9tZhb0DGxo6iSIS9oNUpLkd0PEMzUYUHr4UwrUO7VruV1AUW3PaF9V78DZ13fNZUiQEzdF76O/w=="
-  "resolved" "https://registry.npmjs.org/@onflow/util-invariant/-/util-invariant-0.0.0.tgz"
-  "version" "0.0.0"
+"@onflow/util-invariant@^1.0.1":
+  "integrity" "sha512-FYLgxASDmD2qVru8G8MX9y3jE8DFie1fk7lWnWndnJvsO94/jmZaql73ytmZme37TQoTWSNfilAgU9T0HcG/gA=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-invariant/-/util-invariant-1.0.1.tgz"
+  "version" "1.0.1"
 
-"@onflow/util-template@0.0.1":
-  "integrity" "sha512-qlJ0oq+QujnZRCOGYaw5OKSDpiDIOpwQMYlMe4Mbz//Wn+LOmUghoKZGmRP+YCgp7BJ4aB6AWW/7kL83NDy50A=="
-  "resolved" "https://registry.npmjs.org/@onflow/util-template/-/util-template-0.0.1.tgz"
-  "version" "0.0.1"
+"@onflow/util-logger@^1.0.1":
+  "integrity" "sha512-0QQ/h8mDQIe9yy6xvFj5GOu7Mo1ZnjwaFcGQRTuM+V6XMD5cxs3IChKYIDuuGIZtzwyf0kwK+HXOqrFQhfB9fg=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-logger/-/util-logger-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "@onflow/sdk" "^1.0.1"
 
-"@onflow/util-uid@0.0.1":
-  "integrity" "sha512-SzBscBdyn1Zoks0Wo/w7J/Ds9IZ/T+KM/wyWMwWla4PnxwBFviy1BytEQY+sM5q1UNOvaGWgGEoRmH/oOCcglA=="
-  "resolved" "https://registry.yarnpkg.com/@onflow/util-uid/-/util-uid-0.0.1.tgz"
-  "version" "0.0.1"
+"@onflow/util-node-http-modules@^1.0.2":
+  "integrity" "sha512-aj+G1Q9Irk0SBFY3jFHPhxe5Tcfn6YKZULTnsEiedsLsanNoTIZ6RGGcD4Z/LEZp3mW9MIni8voPFJifrSND5w=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-node-http-modules/-/util-node-http-modules-1.0.2.tgz"
+  "version" "1.0.2"
+
+"@onflow/util-template@^1.0.1":
+  "integrity" "sha512-+aRn0tjWkE5csPXtijoETxIkwZwH+vSQJgjSL6s6gfeleS6kJNI3uXyrJberATAg/oK5XDtymNwxJxh8lxZS3g=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-template/-/util-template-1.0.1.tgz"
+  "version" "1.0.1"
+
+"@onflow/util-uid@^1.0.1":
+  "integrity" "sha512-/CHK3AC8Ex2uUFmbmrVbp/NlmSfkVPUxbkImoBgjf0WecodD7yCFojYePfB8srjk+LsAyMP6iOmcyiMDYiaM6Q=="
+  "resolved" "https://registry.npmjs.org/@onflow/util-uid/-/util-uid-1.0.1.tgz"
+  "version" "1.0.1"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.2":
   "integrity" "sha512-Loc4UDGutcZ+Bd56hBInkm6JyjyCwWy4t2wcDXzN8EDPANgVRj0VP8Nxn0Zq2pc+WKauZwEivQgbDGg4xZO20A=="
@@ -3172,6 +3218,14 @@
     "ieee754" "^1.1.4"
     "isarray" "^1.0.0"
 
+"buffer@^6.0.3":
+  "integrity" "sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA=="
+  "resolved" "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz"
+  "version" "6.0.3"
+  dependencies:
+    "base64-js" "^1.3.1"
+    "ieee754" "^1.2.1"
+
 "buffer@6.0.3":
   "integrity" "sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA=="
   "resolved" "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz"
@@ -4520,7 +4574,7 @@
   "resolved" "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.752.tgz"
   "version" "1.3.752"
 
-"elliptic@^6.5.3":
+"elliptic@^6.5.3", "elliptic@^6.5.4":
   "integrity" "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ=="
   "resolved" "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz"
   "version" "6.5.4"
@@ -5597,9 +5651,9 @@
     "slash" "^3.0.0"
 
 "google-protobuf@^3.11.4", "google-protobuf@^3.14.0", "google-protobuf@^3.2.0":
-  "integrity" "sha512-Isv1RlNC+IzZzilcxnlVSf+JvuhxmY7DaxYCBy+zPS9XVuJRtlTTIXR9hnZ1YL1MMusJn/7eSy2swCzZIomQSg=="
-  "resolved" "https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.19.1.tgz"
-  "version" "3.19.1"
+  "integrity" "sha512-XMf1+O32FjYIV3CYu6Tuh5PNbfNEU5Xu22X+Xkdb/DUexFlCzhvv7d5Iirm4AOwn8lv4al1YvIhzGrg2j9Zfzw=="
+  "resolved" "https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.20.1.tgz"
+  "version" "3.20.1"
 
 "graceful-fs@^4.1.11", "graceful-fs@^4.1.15", "graceful-fs@^4.1.2", "graceful-fs@^4.1.6", "graceful-fs@^4.2.0", "graceful-fs@^4.2.4":
   "integrity" "sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ=="
