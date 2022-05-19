@@ -5,8 +5,8 @@ export function MainnetConfig() {
   useEffect(() => {
     fcl
       .config()
-      .put("env", "mainnet")
-      .put("accessNode.api", "https://access-mainnet-beta.onflow.org")
+      .put("flow.network", "mainnet")
+      .put("accessNode.api", "https://rest-mainnet.onflow.org")
       .put("discovery.wallet", "https://fcl-discovery.onflow.org/authn")
       .put("fcl.eventsPollRate", 2500)
       .put("0xLockedTokens", "0x8d0e87b65159ae63")
