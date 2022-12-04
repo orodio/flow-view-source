@@ -5,6 +5,7 @@ import {RecoilRoot} from "recoil"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import {MainnetConfig} from "./config/mainnet-config.comp"
 import {TestnetConfig} from "./config/testnet-config.comp"
+import {SandboxConfig} from "./config/sandboxnet-config.comp"
 import {CanarynetConfig} from "./config/canarynet-config.comp"
 import {GlobalStyles} from "./styles/global"
 
@@ -42,6 +43,7 @@ ReactDOM.render(
       <Router>
         <Route path="/mainnet/" component={MainnetConfig} />
         <Route path="/testnet/" component={TestnetConfig} />
+        <Route path="/sandboxnet/" component={SandboxConfig} />
         <Route path="/canarynet/" component={CanarynetConfig} />
         <Switch>
           <Route exact path="/:env/account/Fx:address" component={Account} />
@@ -54,17 +56,9 @@ ReactDOM.render(
           <Route exact path="/:env/account/0x:address/contract/new" component={AccountContractNew} />
           <Route exact path="/:env/account/0x:address/contract/:name" component={AccountContract} />
 
-          <Route exact path="/mainnet/tx/:txId" component={TxStatus} />
-          <Route exact path="/testnet/tx/:txId" component={TxStatus} />
-          <Route exact path="/carnarynet/tx/:txId" component={TxStatus} />
-
-          <Route exact path="/mainnet/event/:eventKey" component={Event} />
-          <Route exact path="/testnet/event/:eventKey" component={Event} />
-          <Route exact path="/canarynet/event/:eventKey" component={Event} />
-
-          <Route exact path="/mainnet/status" component={Status} />
-          <Route exact path="/testnet/status" component={Status} />
-          <Route exact path="/canarynet/status" component={Status} />
+          <Route exact path="/:env/tx/:txId" component={TxStatus} />
+          <Route exact path="/:env/event/:eventKey" component={Event} />
+          <Route exact path="/:env/status" component={Status} />
 
           <Route component={NoMatch} />
         </Switch>
@@ -73,8 +67,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 )
-
-// <Route exact path="/mainnet/account/Fx:address" component={Account} />
-// <Route exact path="/testnet/account/Fx:address" component={Account} />
-// <Route exact path="/mainnet/account/0x:address" component={Account} />
-// <Route exact path="/testnet/account/0x:address" component={Account} />
