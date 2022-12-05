@@ -31,8 +31,8 @@ const Header = () => {
 
 const fmtCurve = i =>
   ({
-    2: "ECDSA_P256",
-    3: "ECDSA_secp256k1",
+    1: "ECDSA_P256",
+    2: "ECDSA_secp256k1",
   }[i] || "--")
 
 const fmtHash = i =>
@@ -44,6 +44,8 @@ const fmtHash = i =>
 export function Page() {
   const {address} = useParams()
   const keys = useAccountKeys(address)
+
+  console.log('key ->', keys)
 
   return (
     <Base sidebar={<SideBar />} header={<Header />}>
