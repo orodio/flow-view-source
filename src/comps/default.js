@@ -81,6 +81,14 @@ export function Default() {
       <br />
       <label>
         <input type="radio" name="environment"
+          defaultChecked={environment === "sandboxnet"}
+          onChange={() => setEnvironment("sandboxnet")}
+        />
+        sandboxnet  <Status href="/sandboxnet/status"><small><Good>STATUS</Good></small></Status>
+      </label>
+      <br />
+      <label>
+        <input type="radio" name="environment"
           defaultChecked={environment === "canarynet"}
           onChange={() => setEnvironment("canarynet")}
         />
